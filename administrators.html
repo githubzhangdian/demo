@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/video.css" rel="stylesheet" />
+
+</head>
+<style>
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+    }
+    
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    a:hover {
+        text-decoration: none;
+        color: blue;
+    }
+    
+    a {
+        color: #4073a7
+    }
+    
+    .myactive {
+        background-color: teal;
+    }
+    
+    dl {
+        width: 800px;
+        /*设置宽度*/
+        height: 220px;
+        /*设置长度*/
+        /*设置边框样式*/
+    }
+    
+    dt {
+        font: bold 20px "宋体";
+        /*设置字体粗体，大小13px,宋体字 */
+        color: #71790c;
+        /*设置文字颜色*/
+    }
+    
+    dd {
+        font: 18px "宋体";
+        margin-left: 50px;
+        /*设置字体大小13px,宋体字 */
+    }
+    
+    .show {
+        display: block;
+    }
+    
+    .div_hid {
+        display: none;
+    }
+    
+    .recordActive {
+        background-color: yellow;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    #main {
+        padding-left: 350px;
+    }
+    
+    .kv-item {
+        padding-left: 100px;
+        padding-bottom: 20px;
+    }
+    
+    .kv-label {
+        display: inline;
+        height: 28px;
+        line-height: 28px;
+        margin-left: -100px;
+        float: left;
+        text-align: right;
+        width: 100px;
+    }
+    
+    .text-align {
+        border: 1px solid #474E63;
+        color: #0A1844;
+        height: 26px;
+        line-height: 26px;
+        padding: 0 2px;
+        width: 177px;
+        text-align: left;
+    }
+    
+    #submit {
+        margin-left: 80px;
+        border: 1px solid #474E63;
+        height: 26px;
+        font-weight: bold;
+    }
+    
+    #reset {
+        border: 1px solid #474E63;
+        height: 26px;
+        font-weight: bold;
+    }
+    
+    #personform label {
+        margin-right: 10px;
+        width: 96px;
+    }
+    
+    #personform div {
+        margin: 10px;
+    }
+</style>
+
+<body class="flex-column" style="background: #ebebec;border: 1px solid goldenrod;">
+    <!---------------------------------------------top区--------------------------------------------------------->
+    <nav class="navbar navbar-expand-lg navbar-light " style="height: 45px;margin-bottom: 5px;
+    background-image: linear-gradient(to bottom, #0838c3 40%, #678dc5 85%,white 100%)">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <svg width="1.5em" height="1.5em" style="color: #e4f0f7;" viewBox="0 0 16 16" class="bi bi-receipt-cutoff" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v13h-1V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51L2 2.118V15H1V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zM0 15.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+                <path fill-rule="evenodd" d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-8a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+              </svg>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="#">科技让生活更美好 <span class="sr-only">(current)</span></a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <div style="font-size: 13px;color:#484141;margin-right: 10px;color: white;">你好有问题请联系我们。</div>
+                <div data-container="body" data-toggle="popover" data-placement="bottom" data-content="QQ:546258425">
+                    <img src="media/qq.png" width="25px" height="25px" alt="">
+                    <span style="color: white;font-size: 10px;">QQ交流</span>
+
+                </div>
+            </form>
+        </div>
+    </nav>
+    <!----------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <div class="flex-row mx-start sx-stretch" style="flex:1;padding:10px;border-top: 2px solid #a3a9f1;">
+
+        <!---------------------------------------------left区--------------------------------------------------------->
+        <div class="flex-column mx-start sx-stretch" style="flex:0 0 250px;background-color: rgba(33, 54, 150, 0.63);padding: 10px;">
+
+            <!--left-top-->
+            <div style="padding: 10px;margin-bottom: 10px;">
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1602774179995&di=71c9c4eb5242091da715035b1153a006&imgtype=0&src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F22%2F20200622133909_rftue.thumb.400_0.jpeg" width="80px"
+                    height="80px" alt="">
+                <div style="font-size: 14px;margin: 5px 0 0 10px;">张小明</div>
+                <div>平台管理员</div>
+            </div>
+
+            <!--left-menu-->
+            <div id="host" class="flex-column mx-start sx-stretch " style="flex: 1;">
+                <!------left-menu-1------>
+                <div data-c="个人中心" class="flex-column mx-start sx-stretch " style="flex:0 0 55px;color: white;font-size: 20px;">
+                    <div class="flex-row sx-center mx-center ">
+                        <div class="flex-txt-center">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            </svg>
+                        </div>
+                        <div id='persontitle' class="flex-txt-center" style="width: 160px;height: 50px;">个人中心</div>
+                        <div id="personrightbtn" class="flex-txt-center" style="width: 36px;height: 36px;">
+                            ▶
+                        </div>
+                    </div>
+                    <div id='personmenu' class="flex-column mx-center sx-center div_hid" style="flex:0 0 60px;color: white;font-size: 14px;">
+                        <div data-c="个人信息查看" class="flex-txt-center" style="width: 160px;">个人信息查看</div>
+                        <div data-c="个人信息修改" class="flex-txt-center" style="width: 160px;margin: 10px 0;">个人信息修改</div>
+                        <!-- <div data-c="当前康复计划" class="flex-txt-center" style="width: 160px;">当前康复计划</div> -->
+
+                    </div>
+                </div>
+
+                <!------left-menu-2------>
+                <div data-c="医院管理" class="flex-column mx-start sx-stretch " style="flex:0 0 55px;color: white;font-size: 20px;">
+                    <div class="flex-row sx-center mx-center ">
+                        <div class="flex-txt-center">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-grid-1x2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9h-5v5h5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/>
+                              </svg>
+                        </div>
+                        <div id='yygl' class="flex-txt-center" style="width: 160px;height: 50px;">医院管理</div>
+                        <div id="yyglrightbtn" class="flex-txt-center" style="width: 36px;height: 36px;">
+                            ▶
+                        </div>
+                    </div>
+
+                    <div id='yyglmenu' class="flex-column mx-center sx-center div_hid" style="flex:0 0 60px;color: white;font-size: 14px;">
+                        <div data-c="医院信息查看" class="flex-txt-center" style="width: 160px;">医院信息查看</div>
+                        <div data-c="医院信息修改" class="flex-txt-center" style="width: 160px;margin: 10px 0;">医院信息修改</div>
+                    </div>
+                </div>
+
+                <!------left-menu-3------>
+                <div data-c="医生管理" class="flex-column mx-start sx-stretch " style="flex:0 0 55px;color: white;font-size: 20px;">
+                    <div class="flex-row sx-center mx-center ">
+                        <div class="flex-txt-center">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-grid-1x2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9h-5v5h5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/>
+                              </svg>
+                        </div>
+                        <div id='doctortitle' class="flex-txt-center" style="width: 160px;height: 50px;">医生管理</div>
+                        <div id="doctorrightbtn" class="flex-txt-center" style="width: 36px;height: 36px;">
+                            ▶
+                        </div>
+                    </div>
+
+                    <div id='doctormenu' class="flex-column mx-center sx-center div_hid" style="flex:0 0 60px;color: white;font-size: 14px;">
+                        <div data-c="医生信息查看" class="flex-txt-center" style="width: 160px;">医生信息查看</div>
+                        <div data-c="医生信息修改" class="flex-txt-center" style="width: 160px;margin: 10px 0;">医生信息修改</div>
+                    </div>
+                </div>
+
+                <!------left-menu-4------>
+                <div data-c="患者管理" class="flex-column mx-start sx-stretch " style="flex:0 0 55px;color: white;font-size: 20px;">
+                    <div class="flex-row sx-center mx-center ">
+                        <div class="flex-txt-center">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-grid-1x2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9h-5v5h5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/>
+                              </svg>
+                        </div>
+                        <div id='patienttitle' class="flex-txt-center" style="width: 160px;height: 50px;">患者管理</div>
+                        <div id="patientrightbtn" class="flex-txt-center" style="width: 36px;height: 36px;">
+                            ▶
+                        </div>
+                    </div>
+
+                    <div id='patientmenu' class="flex-column mx-center sx-center div_hid" style="flex:0 0 60px;color: white;font-size: 14px;">
+                        <div data-c="患者信息查看" class="flex-txt-center" style="width: 160px;">患者信息查看</div>
+                        <div data-c="患者信息修改" class="flex-txt-center" style="width: 160px;margin: 10px 0;">患者信息修改</div>
+                    </div>
+                </div>
+                <!------left-menu-5------>
+                <div data-c="设备管理" class="flex-column mx-start sx-stretch " style="flex:0 0 55px;color: white;font-size: 20px;">
+                    <div class="flex-row sx-center mx-center ">
+                        <div class="flex-txt-center">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-grid-1x2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9h-5v5h5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/>
+                            </svg>
+                        </div>
+                        <div id='sbgltitle' class="flex-txt-center" style="width: 160px;height: 50px;">设备管理</div>
+                        <div id="sbglrightbtn" class="flex-txt-center" style="width: 36px;height: 36px;">
+                            ▶
+                        </div>
+                    </div>
+
+                    <div id='sbglmenu' class="flex-column mx-center sx-center div_hid" style="flex:0 0 60px;color: white;font-size: 14px;">
+                        <div data-c="设备信息查看" class="flex-txt-center" style="width: 160px;">设备信息查看</div>
+                        <div data-c="设备信息修改" class="flex-txt-center" style="width: 160px;margin: 10px 0;">设备信息修改</div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+        <!---------------------------------------------left区结束--------------------------------------------------------->
+        <!------------------------------------------------首页--------------------------------------------------------->
+        <div id="index" class="flex-txt-center" style="flex:1 0 auto;border: 1px solid blueviolet;">
+            <div class="flex-txt-center">
+                <dl style="padding-left: 90px;width: 850px;">
+                    <h1>尊敬的管理员，你好！</h1>
+                    <p style="padding-bottom: 20px;">欢迎使用本平台，您拥有本平台系统内的最高权限，可以进行如下操作</p>
+                    <dd>1. 远程监控接入本物联网平台的设备，实时监测其运行状态，对其他进行在线管理。</dd>
+                    <dd>2. 查看相关医院信息并进行管理。 </dd>
+                    <dd>3. 查看相关医生信息并进行管理。 </dd>
+                    <dd>4. 查看相关患者信息并进行管理。 </dd>
+                    <dd>......</dd>
+                </dl>
+            </div>
+        </div>
+
+        <!---------------------------------------------right区--------------------------------------------------------->
+        <div id='mycontent' class="flex-column mx-start sx-stretch div_hid" style="flex:1 0 auto; border:1px solid red">
+
+            <!---------------------------------------------nav导航显示--------------------------------------------------------->
+            <nav aria-label="breadcrumb">
+                <ol id="breadnav" class="breadcrumb">
+                    <li class="breadcrumb-item active">个人中心</li>
+                    <li class="breadcrumb-item div_hid"></li>
+                    <li class="breadcrumb-item div_hid"></li>
+
+                </ol>
+            </nav>
+
+            <!----content------->
+            <div id="content" class="flex-column mx-start sx-stretch" style="flex:1 0 auto;margin-left:10px;background-color: #f5f3ef;">
+
+                <!----content-1---->
+                <div id="personWrap" class="flex-txt-center " style="flex:1 0 auto">
+                    <div class="flex-column mx-start sx-stretch" style="padding:20px;width: 400px;height:200px;font-size: 20px;">
+                        <div>用户名：张小米</div>
+                        <div>密码：1234556</div>
+                        <div>性别：男</div>
+                        <div>身份证号：4503311221333423</div>
+                    </div>
+                    <div class="div_hid">
+                        <form name="personalForm" method="post" action="" onSubmit="return check(this)">
+                            <div class="kv-item">
+                                <span class="kv-label">
+                                <label class="tsl" for="username">用户名：</label>
+                                 </span>
+                                <input type="text" name="username" class="text-align" id="username" placeholder="*必填项" autofocus size="25" title="用户名">
+                            </div>
+                            <div class="kv-item">
+                                <span class="kv-label">
+                            <label class="tsl" for="pwd">密&nbsp;码：</label>
+                            </span>
+                                <input type="password" name="pwd" class="text-align" id="pwd" placeholder="*必填项" size="25" title="密码">
+                            </div>
+                            <div class="kv-item">
+                                <span class="kv-label">
+                            <label class="tsl" for="repwd">确认密码：</label>
+                            </span>
+                                <input type="password" name="repwd" class="text-align" id="repwd" placeholder="*必填项" size="25" title="确认密码">
+                            </div>
+                            <div class="kv-item">
+                                <span class="kv-label">
+                            <label class="tsl" for="repwd">证件号：</label>
+                            </span>
+                                <input type="password" name="repwd" class="text-align" id="repwd" placeholder="*必填项" size="25" title="身份证号">
+                            </div>
+                            <div class="kv-item">
+                                <span class="kv-label">
+                            <label class="tsl" for="sex_boy">性&nbsp;别：</label>
+                            </span>
+                                <input type="radio" name="sex" id="sex_boy" value="男" checked> 男
+                                <input type="radio" name="sex" id="sex_girl" value="女">女</div>
+                            <div class="kv-item">
+                                <span class="kv-label">
+                            <!-- <label class="tsl" for="student">职&nbsp;业：</label>
+                            </span>
+                                <select name="job">
+                            <option id="student" value="学生" selected="selected">学生</option>
+                            <option value="职员">职员</option>
+                            <option value="经理">经理</option>
+                            <option value="军人">军人</option>
+                            <option value="自由人">自由人</option>
+                            </select> -->
+                            </div>
+
+                            <div class="kv-item">
+                                <input type="submit" name="submit" id="submit" value="提交">
+                                <input type="reset" name="reset" id="reset" value="重置">
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+                <!----content-2---->
+                <div id="yyglWrap" class="div_hid" style="flex:1 0 auto">
+                    <div>
+                        <h1>医院信息查看</h1>
+                    </div>
+                    <div class="flex-column mx-center sx-center div_hid" style="flex:1;">
+                        <form id="personform" class="form-inline" role="form" style="width:660px;padding: 10px;" method="post" action="" onSubmit="return check(this)">
+                            <div class="form-group">
+                                <label for="">医院编号</label>
+                                <input type="text" class="form-control" value="100100210">
+                            </div>
+                            <div class="form-group">
+                                <label for="">医院名称</label>
+                                <input type="text" class="form-control" value="山东中医院">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">医院性质</label>
+                                <select class="form-control" style="width: 190px;" name="" id="">
+                                    <option value="">国家三级甲等医院</option>
+                                    <option value="">国家二级甲等医院</option>
+                                    <option value="">私人医院</option>
+                                </select>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="">医院地址</label>
+                                <input type="text" class="form-control" value='山东理工大学'>
+                            </div>
+                            <div class="form-group">
+                                <label for="">服务热线</label>
+                                <input type="text" class="form-control" value="88592630">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">医院主治</label>
+                                <textarea class="form-contro" style="width: 503px;height: 100px;padding:5px;">医院有国家中医药管理局重点专科（专病）及建设项目4个，分别是肿瘤科、脾胃科（消化内科）、脑病科（神经内科）、针灸科；广东省中医重点专科（专病）9个，分别是心病科（心血管内科）、肿瘤科、针灸科、脑病科（神经内科）、骨伤科、急诊科、溃疡性结肠炎专病、慢性肾功能衰竭专病、脉管炎（周围血管病）专病；广东省中医名科1个：脑病科；广东省“十二五”中医重点专科建设项目3个，分别是内分泌科、肺病科（呼吸内科）、乳腺外科；广州市中医名科3个，分别是糖尿病专科、中医妇科、中医男科；广州市“十二五”、“十三五”中医重点专科（专病）及建设单位共4个，分别是脑病科（神经内科）、针灸科、脉管炎科（周围血管病科）、内分泌科。
+                                </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="">医院介绍</label>
+                                <textarea class="form-contro" style="width: 503px;height: 100px;padding:5px;">广州医科大学附属中医医院始建于二十世纪三十年代，1956年经市政府命名为“广州市第三人民医院”， 1960年更名为“广州市中医医院”， 2004年成为广州中医药大学非直属附属医院。是一所集医疗、科研、教学、预防保健于一体的综合性三级甲等中医医院。医院有荔湾区珠玑路（院本部）、白云区横滘二横路（同德围分院）两个院区、同德门诊部和五羊门诊部两个下设门诊部。广州市中医医院一直秉承“中医为本，西为中用，全心全意为病人服务”的办院宗旨，悬壶济世，治病救人，以“艺精德高”蜚声杏林、驰誉海内外，荣获“省文明中医医院”、“省百家文明医院”称号。2007年成为广东省中医名院建设单位，2010年成为广东省中医治未病健康工程试点单位，2011年12月成为广州市中医名院，2012年成为广东省博土后创新基地,2016年成为首批健康医院，2017年成为国家中医住院医师规范化培训基地，2018年成为广州医科大学中西医临床学院。2020年更名为广州医科大学附属中医医院。
+                                </textarea>
+                            </div>
+
+                            <div class="form-group flex-txt-center" style="width: 100%;">
+                                <button type="submit" style="margin-right: 20px;width: 80px;" class="btn btn-primary">提交</button>
+                                <button type="reset" style="margin-right: 20px;width: 80px;" class="btn btn-secondary">重置</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <!----content-3----->
+                <div id="doctorWrap" class="div_hid" style="flex:1 0 auto">
+                    <div>
+                        <h1>医生信息查看</h1>
+                    </div>
+                    <div class="div_hid">
+                        <h1>医生信息修改</h1>
+                    </div>
+                </div>
+
+                <!----content-4----->
+                <div id="patientWrap" class="div_hid">
+                    <div>
+                        <h1>患者信息查看</h1>
+                    </div>
+                    <div class="div_hid">
+                        <h1>患者信息修改</h1>
+                    </div>
+                </div>
+                <!----content-4----->
+                <div id="sbglWrap" class="div_hid">
+                    <div>
+                        <h1>设备信息查看</h1>
+                    </div>
+                    <div class="div_hid">
+                        <h1>设备信息修改</h1>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="flex-txt-center" style="height: 40px;background-color: #007bff;color: white;"> 友情链接，丁香园。山东理工大学</div>
+
+
+</body>
+<script src="./js/popper.js"></script>
+<script src="./js/jquery.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/mymenu.js"></script>
+<script>
+    $(function() {
+        $('[data-toggle="popover"]').popover();
+    })
+</script>
+
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/video.css" rel="stylesheet" />
+
+</head>
+<style>
+    html,
+    body {
+        width: 100%;
+    }
+    
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    a:hover {
+        text-decoration: none;
+        color: blue;
+    }
+    
+    a {
+        color: #4073a7
+    }
+    
+    .myactive {
+        background-color: teal;
+    }
+    
+    dl {
+        width: 800px;
+        /*设置宽度*/
+        height: 220px;
+        /*设置长度*/
+        /*设置边框样式*/
+    }
+    
+    dt {
+        font: bold 20px "宋体";
+        /*设置字体粗体，大小13px,宋体字 */
+        color: #71790c;
+        /*设置文字颜色*/
+    }
+    
+    dd {
+        font: 18px "宋体";
+        margin-left: 50px;
+        /*设置字体大小13px,宋体字 */
+    }
+    
+    .show {
+        display: block;
+    }
+    
+    .div_hid {
+        display: none;
+    }
+    
+    .recordActive {
+        background-color: yellow;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    #main {
+        padding-left: 350px;
+    }
+    
+    .kv-item {
+        padding-left: 100px;
+        padding-bottom: 20px;
+    }
+    
+    .kv-label {
+        display: inline;
+        height: 28px;
+        line-height: 28px;
+        margin-left: -100px;
+        float: left;
+        text-align: right;
+        width: 100px;
+    }
+    
+    .text-align {
+        border: 1px solid #474E63;
+        color: #0A1844;
+        height: 26px;
+        line-height: 26px;
+        padding: 0 2px;
+        width: 177px;
+        text-align: left;
+    }
+    
+    #submit {
+        margin-left: 80px;
+        border: 1px solid #474E63;
+        height: 26px;
+        font-weight: bold;
+    }
+    
+    #reset {
+        border: 1px solid #474E63;
+        height: 26px;
+        font-weight: bold;
+    }
+    /* #robootnav div:hover {
+        background-color: green;
+    } */
+    
+    #robootnav div {
+        background-color: blue;
+        height: 50px;
+        color: white;
+    }
+    
+    #robootnav .active {
+        background-color: green;
+    }
+    
+    p {
+        margin-bottom: 5px;
+    }
+</style>
+
+<body class="flex-column" style="background: #ebebec;">
+    <!---------------------------------------------top区--------------------------------------------------------->
+    <nav class="navbar navbar-expand-lg navbar-light " style="height: 45px;margin-bottom: 5px;
+    background-image: linear-gradient(to bottom, #0838c3 40%, #678dc5 85%,white 100%)">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <svg width="1.5em" height="1.5em" style="color: #e4f0f7;" viewBox="0 0 16 16" class="bi bi-receipt-cutoff" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v13h-1V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51L2 2.118V15H1V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zM0 15.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
+                <path fill-rule="evenodd"
+                    d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-8a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+            </svg>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="#">科技让生活更美好 <span
+                            class="sr-only">(current)</span></a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <div style="font-size: 13px;color:#484141;margin-right: 10px;color: white;">你好有问题请联系我们。</div>
+                <div data-container="body" data-toggle="popover" data-placement="bottom" data-content="QQ:546258425">
+                    <img src="media/qq.png" width="25px" height="25px" alt="">
+                    <span style="color: white;font-size: 10px;">QQ交流</span>
+
+                </div>
+            </form>
+        </div>
+    </nav>
+    <!----------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <div class="flex-column mx-start sx-stretch" style="flex:1;padding:10px;border-top: 2px solid #a3a9f1;">
+
+
+        <div class="flex-row mx-start sx-stretch" style="flex:0 0 68px;">
+            <div class="flex-txt-center" style="flex: 0 0 367px;
+            color: blue;
+            font-size: 26px;
+            font-weight: 20px;
+            height: 68px;
+            /* background-color: rebeccapurple; */
+            margin: 0 61px 0 140px;">
+                上肢康复机器人
+            </div>
+            <div id="robootnav" class="flex-row mx-evenly sx-center" style="flex: 0 0 600px;height: 68px;">
+                <div class="flex-txt-center active" style="flex:1;">首页</div>
+                <div class="flex-txt-center" style="flex:1;">训练内容</div>
+                <div class="flex-txt-center" style="flex:1;">进行训练</div>
+                <div class="flex-txt-center" style="flex:1;">使用帮助</div>
+
+            </div>
+        </div>
+        <div></div>
+        <div class="flex-column mx-center sx-center" style="border: 1px solid gray;padding: 10px;position: relative;min-height: 300px;">
+            <div style="margin:20px;position: absolute;right: 0px;top: 0px;">
+                <input type="file" onchange="change(this)" style="width: 320px;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+            </div>
+            <div style="margin:20px;position: absolute;left: 0px;top: 0px;">
+                请导入xls表格数据
+            </div>
+            <h4>康复训练关节角度检测图</h4>
+            <small style="margin-bottom: 10px;">数据来源：山东理工大学下肢康复训练平台</small>
+            <div id="kangfuData" style="width: 80%;height:250px;"></div>
+
+        </div>
+        <div class="flex-row mx-evenly sx-center" style="flex:0 0 auto;border: 1px solid gray;margin: 10px 0;padding: 20px 0;">
+            <div class="flex-column mx-center sx-center" style="flex: 0 0 338px;
+            height: 338px;
+            border: 1px solid #ada9a9;
+            border-radius: 10px;">
+                <p>移动速度</p>
+                <small style="margin-bottom: 10px;">数据来源：山东理工大学下肢康复训练平台</small>
+                <div id='suduchart' style="width: 250px;height:250px;"></div>
+            </div>
+            <div class="flex-column mx-center sx-center" style="
+            flex: 0 0 338px;
+            height: 338px;
+            border: 1px solid #ada9a9;
+            border-radius: 10px;">
+                <p>心率</p>
+                <small style="margin-bottom: 10px;">数据来源：山东理工大学下肢康复训练平台</small>
+                <div id='xinlvchart' style="width: 250px;height:250px;"></div>
+
+            </div>
+            <div class="flex-column mx-center sx-center" style="flex: 0 0 338px;
+            height: 338px;
+            border: 1px solid #ada9a9;
+            border-radius: 10px;">
+                <p>电池电量</p>
+                <small style="margin-bottom: 10px;">数据来源：山东理工大学下肢康复训练平台</small>
+                <div id='dianchichart' style="width: 250px;height:250px;"></div>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+    <div class="flex-txt-center" style="height: 40px;background-color: #007bff;color: white;"> 友情链接，丁香园。山东理工大学</div>
+
+
+</body>
+<script src="./js/popper.js"></script>
+<script src="./js/jquery.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/mymenu.js"></script>
+<script src="./js/echarts.min.js"></script>
+<script src="./js/xlsx.full.min.js"></script>
+
+<script>
+    $(function() {
+        $('[data-toggle="popover"]').popover();
+        $('#kangfuData').css({
+            display: 'none'
+        });
+    })
+
+    $('#robootnav').children('*').on('click', function() {
+        $(this).addClass('active');
+        $(this).siblings().removeClass('active');
+
+    })
+
+    var excelData;
+    var count = 0;
+
+    function change(obj) {
+        if (!obj.files) {
+            return;
+        }
+        var file = obj.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var data = e.target.result;
+            excelData = XLSX.read(data, {
+                type: 'binary'
+            });
+            var json = XLSX.utils.sheet_to_json(excelData.Sheets[excelData.SheetNames[0]]);
+            var showdata = JSON.parse(JSON.stringify(json, null, "\t"));
+            var x = ['time'];
+            var y1 = ['hip_angle_l'];
+            var y2 = ['hip_angle_r'];
+            var y3 = ['knee_angle_l'];
+            var y4 = ['knee_angle_r'];
+            showdata.forEach(item => {
+                x.push(item.time);
+                y1.push(item.hip_angle_l);
+                y2.push(item.hip_angle_r);
+                y3.push(item.knee_angle_l);
+                y4.push(item.knee_angle_r);
+            });
+            option.dataset.source.push(x);
+            option.dataset.source.push(y1);
+            option.dataset.source.push(y2);
+            option.dataset.source.push(y3);
+            option.dataset.source.push(y4);
+            // setInterval(() => {
+
+            //     x.push(showdata[count].time);
+            //     y1.push(showdata[count].hip_angle_l);
+            //     y2.push(showdata[count].hip_angle_r);
+            //     y3.push(showdata[count].knee_angle_l);
+            //     y4.push(showdata[count].knee_angle_r);
+            //     option.dataset.source.push(x);
+            //     option.dataset.source.push(y1);
+            //     option.dataset.source.push(y2);
+            //     option.dataset.source.push(y3);
+            //     option.dataset.source.push(y4);
+            //     myChart.setOption(option);
+            //     count++;
+            //     if (count == showdata.length - 1) {
+            //         count = 0;
+            //         x = ['time'];
+            //         y1 = ['hip_angle_l'];
+            //         y2 = ['hip_angle_r'];
+            //         y3 = ['knee_angle_l'];
+            //         y4 = ['knee_angle_r'];
+            //         option.dataset.source = [];
+            //     }
+            // }, 500);
+            myChart.setOption(option);
+            $('#kangfuData').css({
+                display: 'flex'
+            });
+        };
+        reader.readAsBinaryString(file);
+    }
+
+    var myChart = echarts.init(document.getElementById('kangfuData'));
+    var option = {
+        legend: {},
+        smooth: true,
+        tooltip: {
+            trigger: 'axis',
+            showContent: false
+        },
+        dataset: {
+            source: []
+        },
+        xAxis: {
+            type: 'category'
+        },
+        yAxis: {
+            gridIndex: 0
+        },
+        grid: {
+            // top: '55%'
+        },
+        series: [{
+                type: 'line',
+                smooth: true,
+                seriesLayoutBy: 'row'
+            }, {
+                type: 'line',
+                smooth: true,
+                seriesLayoutBy: 'row'
+            }, {
+                type: 'line',
+                smooth: true,
+                seriesLayoutBy: 'row'
+            }, {
+                type: 'line',
+                smooth: true,
+                seriesLayoutBy: 'row'
+            },
+
+        ]
+    };
+    var mysuduChart = echarts.init(document.getElementById('suduchart'));
+    var suduoption = {
+        tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+        },
+        toolbox: {
+            feature: {
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        series: [{
+            name: '业务指标',
+            type: 'gauge',
+            detail: {
+                formatter: '{value}m/s'
+            },
+            data: [{
+                value: 1,
+                name: '移动速度'
+            }],
+            // axisLine: {
+            //     lineStyle: {
+            //         width: 20 // 这个是修改宽度的属性
+            //     }
+            // },
+            axisLable: {
+                distance: 0
+            },
+            splitNumber: 20,
+            max: 2,
+            radius: '100%',
+
+        }]
+    };
+
+    setInterval(function() {
+        suduoption.series[0].data[0].value = (Math.random() / 2 + 0.5).toFixed(2);
+        mysuduChart.setOption(suduoption, true);
+    }, 1000);
+
+    var myxinlvChart = echarts.init(document.getElementById('xinlvchart'));
+    var xinlvption = {
+        tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+        },
+        toolbox: {
+            feature: {
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        series: [{
+            name: '业务指标',
+            type: 'gauge',
+            detail: {
+                formatter: '{value}'
+            },
+            data: [{
+                value: 1,
+                name: '心率'
+            }],
+            // axisLine: {
+            //     lineStyle: {
+            //         width: 20 // 这个是修改宽度的属性
+            //     }
+            // },
+            axisLable: {
+                distance: 0
+            },
+            splitNumber: 10,
+            max: 150,
+            radius: '100%',
+
+        }]
+    };
+
+    setInterval(function() {
+        // xinlvption.series[0].data[0].value = ((Math.random() * 10) * 15).toFixed(2) - 0;
+        xinlvption.series[0].data[0].value = Math.floor((Math.random() * (130 - 120 + 1) + 120));
+        myxinlvChart.setOption(xinlvption, true);
+    }, 1000);
+
+    var dianchiChart = echarts.init(document.getElementById('dianchichart'));
+    var dianchioption = {
+        tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+        },
+        toolbox: {
+            feature: {
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        series: [{
+            name: '业务指标',
+            type: 'gauge',
+            detail: {
+                formatter: '{value}%'
+            },
+            data: [{
+                value: 1,
+                name: '电池'
+            }],
+            // axisLine: {
+            //     lineStyle: {
+            //         width: 20 // 这个是修改宽度的属性
+            //     }
+            // },
+            axisLable: {
+                distance: 0
+            },
+            splitNumber: 10,
+            max: 100,
+            radius: '100%',
+
+        }]
+    };
+    var i = 100;
+    // setInterval(function() {
+    setInterval(() => {
+        i--;
+        dianchioption.series[0].data[0].value = i;
+        if (i == 0) {
+            i = 100;
+        }
+        dianchiChart.setOption(dianchioption, true);
+
+    }, 1000);
+    // }, 1000);
+</script>
+
+</html>
