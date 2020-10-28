@@ -110,6 +110,9 @@
     #personform div {
         margin: 10px;
     }
+    #personform .form-group input{
+        width: 250px;
+    }
     
     @keyframes mymove {
         from {
@@ -120,6 +123,12 @@
             top: 0px;
             left: 10px;
         }
+    }
+    #bottominfo a{
+        color: white;
+    }
+    #bottominfo a:hover {
+        color: blue;
     }
 </style>
 
@@ -234,7 +243,7 @@
         </div>
         <!---------------------------------------------left区结束--------------------------------------------------------->
         <!------------------------------------------------首页--------------------------------------------------------->
-        <div id="index" class="flex-txt-center" style="flex:1 0 auto;border: 1px solid gray;">
+        <div id="index" class="flex-txt-top-center" style="padding-top: 80px;flex:1 0 auto;border: 1px solid #6788f1;">
             <div class="flex-txt-center">
                 <dl style="padding-left: 90px;width: 850px;">
                     <h1>尊敬的患者，你好！</h1>
@@ -265,53 +274,62 @@
 
                 <!----content-1---->
                 <div id="personWrap" class="flex-column mx-start sx-stretch" style="flex:1 0 auto">
+                    
                     <div class="flex-column mx-center sx-center" style="flex:1;">
+                        <div class="page-header" style="margin: 20px;">
+                            <h1>亲爱的用户你好！ <small>祝您生活愉快！</small></h1>
+                          </div>
                         <div class="flex-column mx-start sx-stretch" style="width: 800px;flex:1 1 auto;border: 1px solid gray;padding: 10px;">
+                            
                             <div class="flex-row mx-start sx-stretch" style="flex:0 0 35px;;">
-                                <div class="flex-row mx-center sx-center" style="flex: 1;background-color: #dccece;">
-                                    <span class="flex-txt-right-center" style="width: 135px;margin-right: 20px;">姓名:</span><span style="width: 135px;">张三</span>
+                                <div style="width: 100px;height: 100px;border: 1px solid;">
+                                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1602774179995&di=71c9c4eb5242091da715035b1153a006&imgtype=0&src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F22%2F20200622133909_rftue.thumb.400_0.jpeg" width="100%"
+                                    height="100%" alt="">
                                 </div>
-                                <div class="flex-row mx-center sx-center" style="flex: 1;background-color: #dccece;">
-                                    <span class="flex-txt-right-center" style="width: 135px;margin-right: 20px;">性别:</span><span style="width: 135px;">男</span>
+                                <div class="flex-row mx-center sx-center" style="flex: 0 0 50px;">
+                                    <span class="flex-txt-right-center" style="width: 83px;margin-right: 20px;">姓名:</span><span style="width: 135px;">张三</span>
+                                </div>
+                                <div class="flex-row mx-start sx-center" style="flex: 1;" >
+                                    <span class="flex-txt-right-center" style="width: 229px;margin-right: 22px;">性别:</span><span style="width: 135px;">男</span>
                                 </div>
                             </div>
                             <div class="flex-row mx-start sx-stretch" style="flex:0 0 35px;;">
-                                <div class="flex-row mx-center sx-center" style="flex: 1;background-color: #dccece;">
+                                <div class="flex-row mx-center sx-center" style="flex: 1;">
                                     <span class="flex-txt-right-center" style="width: 135px;margin-right: 20px;">年龄:</span><span style="width: 135px;">18</span>
                                 </div>
-                                <div class="flex-row mx-center sx-center" style="flex: 1;background-color: #dccece;">
+                                <div class="flex-row mx-center sx-center" style="flex: 1;">
                                     <span class="flex-txt-right-center" style="width: 135px;margin-right: 20px;">联系电话:</span><span style="width: 135px;">18596358256</span>
                                 </div>
                             </div>
 
                             <div class="flex-row mx-start sx-stretch" style="flex:0 0 35px;;">
-                                <div class="flex-row mx-center sx-center" style="flex: 1;background-color: #dccece;">
+                                <div class="flex-row mx-center sx-center" style="flex: 1;">
                                     <span class="flex-txt-right-center" style="width: 135px;margin-right: 20px;">家庭住址:</span><span style="width: 135px;">广州市XXX</span>
                                 </div>
-                                <div class="flex-row mx-center sx-center" style="flex: 1;background-color: #dccece;">
+                                <div class="flex-row mx-center sx-center" style="flex: 1;">
                                     <span class="flex-txt-right-center" style="width: 135px;margin-right: 20px;">身份证号码:</span><span style="width: 135px;">4503685236253663</span>
                                 </div>
                             </div>
                             <div class="flex-row mx-start sx-stretch" style="flex:0 0 35px;;">
-                                <div class="flex-row mx-center sx-center" style="flex: 1;background-color: #dccece;">
+                                <div class="flex-row mx-center sx-center" style="flex: 1;">
                                     <span class="flex-txt-right-center" style="width: 135px;margin-right: 20px;">所患疾病:</span><span style="width: 135px;">腰椎间盘突出</span>
                                 </div>
-                                <div class="flex-row mx-center sx-center" style="flex: 1;background-color: #dccece;">
+                                <div class="flex-row mx-center sx-center" style="flex: 1;">
                                     <span class="flex-txt-right-center" style="width: 135px;margin-right: 20px;">患病时长:</span><span style="width: 135px;">四年</span>
                                 </div>
                             </div>
                             <div class="flex-row mx-start sx-stretch" style="flex:0 0 35px;;">
-                                <div class="flex-row mx-center sx-center" style="flex: 1;background-color: #dccece;">
+                                <div class="flex-row mx-center sx-center" style="flex: 1;">
                                     <span class="flex-txt-right-center" style="width: 135px;margin-right: 20px;">入院日期:</span><span style="width: 135px;">2020-10-10</span>
                                 </div>
-                                <div class="flex-row mx-center sx-center" style="flex: 1;background-color: #dccece;">
+                                <div class="flex-row mx-center sx-center" style="flex: 1;">
                                     <span class="flex-txt-right-center" style="width: 135px;margin-right: 20px;">就诊医生姓名:</span><span style="width: 135px;">李欣骨科副主任</span>
                                 </div>
                             </div>
 
-                            <div class="flex-column mx-start sx-stretch" style="flex:0 0 auto;;">
-                                <label>病历：</label>
-                                <div style="flex:1;background-color: #dccece;padding: 10px;">
+                            <div class="flex-column mx-start sx-stretch" style="padding: 10px;flex:0 0 auto;margin: 10px;border-top: 1px solid gray;">
+                                <label><strong style="font-size: 24px;">病历：</strong></label>
+                                <div style="flex:1;padding: 10px;line-height: 26px;">
                                     现病史：患者汽车修理工，长期弯腰工作，自述1年前无明显诱因出现右下肢疼痛麻木，晚间疼痛渐増，时痛如刀割火燿，并以蚁行感沿右下肢放射，在私人诊所予“腰痛宁胶囊，VitB1、VitB12肌肉注射”未见好转，以后反复发作，腰部酸软困痛，喜揉喜按，遇劳加重，卧则减轻。4天前，劳累过度，致腰痛加生，今日来我院，行X线检查：L4-5、L5-S1椎间盘突出，L34椎体骨质增生，门诊以“腰痛-腰椎间盘突出症L4-5、L5-S1”收住入院住院。症见：神清，精神差，表情痛苦，面色咣白，手足不温，少气乏力，上述腰痛症状仍存，纳可，夜寐安，二便自调。
                                 </div>
                             </div>
@@ -321,15 +339,18 @@
                         </div>
                     </div>
 
-                    <div class="flex-column mx-center sx-center div_hid" style="flex:1;">
-                        <form id="personform" class="form-inline" role="form" style="width:660px;padding: 10px;" method="post" action="" onSubmit="return check(this)">
+                    <div class="flex-column mx-start sx-center div_hid" style="flex:1;">
+                        <div class="page-header" style="margin: 20px;">
+                            <h1>亲爱的用户，您好！你可以填写需要修改的信息。 <small>祝您健康！</small></h1>
+                          </div>
+                        <form id="personform" class="form-inline" role="form" style="width:800px;border:1px solid gray;padding: 20px;" method="post" action="" onSubmit="return check(this)">
                             <div class="form-group">
                                 <label for="">姓名</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" value="张小明">
                             </div>
                             <div class="form-group">
                                 <label for="">性别</label>
-                                <select class="form-control" style="width: 190px;" name="" id="">
+                                <select class="form-control" style="width: 250px;" name="" id="">
                                     <option value="">男</option>
                                     <option value="">女</option>
 
@@ -337,39 +358,40 @@
                             </div>
                             <div class="form-group">
                                 <label for="">年龄</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" value="18">
                             </div>
                             <div class="form-group">
                                 <label for="">联系电话</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" value="18593273311">
                             </div>
                             <div class="form-group">
                                 <label for="">家庭住址</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" value="山东理工大学">
                             </div>
                             <div class="form-group">
                                 <label for="">身份证号码</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" value="4503211998040160254">
                             </div>
                             <div class="form-group">
                                 <label for="">所患疾病</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" value="腰椎突出">
                             </div>
                             <div class="form-group">
                                 <label for="">患病时长</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" value="4年">
                             </div>
                             <div class="form-group">
                                 <label for="">入院日期</label>
-                                <input type="date" class="form-control">
+                                <input type="date" class="form-control" value="2020-10-10">
                             </div>
                             <div class="form-group">
                                 <label for="">就诊医生姓名</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" value="王涛">
                             </div>
                             <div class="form-group">
                                 <label for="">病历</label>
-                                <textarea class="form-control" style="width: 503px;height: 100px;"></textarea>
+                                <textarea class="form-control" style="width: 623px;height: 150px;">自述1年前无明显诱因出现右下肢疼痛麻木，晚间疼痛渐増，时痛如刀割火燿，并以蚁行感沿右下肢放射，在私人诊所予“腰痛宁胶囊，VitB1、VitB12肌肉注射”未见好转，以后反复发作，腰部酸软困痛，喜揉喜按，遇劳加重，卧则减轻。4天前，劳累过度，致腰痛加生，今日来我院，行X线检查：L4-5、L5-S1椎间盘突出，L34椎体骨质增生，门诊以“腰痛-腰椎间盘突出症L4-5、L5-S1”收住入院住院。症见：神清，精神差，表情痛苦，面色咣白，手足不温，少气乏力，上述腰痛症状仍存，纳可，夜寐安，二便自调。
+                                </textarea>
                             </div>
                             <div class="form-group flex-txt-center" style="width: 100%;">
                                 <button type="submit" style="margin-right: 20px;width: 80px;" class="btn btn-primary">提交</button>
@@ -579,7 +601,7 @@
                         </div>
                         <div class="flex-column mx-start sx-stretch" style="margin-left: 5px;padding:10px;overflow: auto;flex:1 1 auto;border:1px solid gray;border-radius: 10px;">
                             <small style="flex:0 0 15px;;margin-left:10px">欢迎咨询，有什么问题请说。</small>
-                            <div id="liaoTianContents" class="flex-column mx-start sx-stretch" style="flex:1 0 auto;overflow:scroll;max-height:300px;">
+                            <div id="liaoTianContents" class="flex-column mx-start sx-stretch" style="flex:1 0 auto;overflow:scroll;height:300px;max-height: 400px;">
                                 <div style="flex:0 0 140px;padding:10px;border:1px solid gray">
                                     <strong>欢迎登陆厦门大学附属厦门眼科中心（莆田眼科医院）咨询预约平台</strong> <br/>
                                     <small> 厦门眼科中心主任亲自到院坐诊手术，拥有厦门同样的设备，专家，技术，更便捷的医保报销政策。 </small><br/>
@@ -665,7 +687,7 @@
         </div>
 
     </div>
-    <div class="flex-txt-center" style="height: 40px;background-color: #007bff;color: white;"> 友情链接，丁香园。山东理工大学</div>
+    <div id="bottominfo" class="flex-txt-center" style="height: 40px;background-color: #4073a7;color: white;"> 友情链接，<a  href="http://www.dxy.cn">丁香园。</a><a href="www.sdut.edu.cn">山东理工大学</a></div>
 
 
 </body>

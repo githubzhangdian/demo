@@ -36,7 +36,7 @@ function menuController() {
                     secondMenuTemp = activeElement.children().eq(0).text(); //默认二级选项的第一个的值
                     $('#breadnav li').eq(1).removeClass('div_hid').text(secondMenuTemp); //nav2显示和值
                     activeElement.children().eq(0).css({
-                        color: 'red'
+                        color: 'blue'
                     });
                     activeElement.children().eq(0).siblings().css({
                         color: 'white'
@@ -91,7 +91,7 @@ function menuController() {
                     contentchild.children().eq($(this).index()).siblings().addClass('div_hid');
                     //修改当前选项样式颜色
                     $(this).css({
-                        color: 'red'
+                        color: 'blue'
                     });
                     $(this).siblings().css({
                         color: 'white'
