@@ -1227,7 +1227,7 @@
                                 <label for="">设备制造商</label>
                                 <input type="text" class="form-control" placeholder="请输入设备制造商">
                             </div>
-       
+
 
                             <div class="form-group">
                                 <label for="">设备用途</label>
@@ -1300,8 +1300,8 @@
                                 style="flex:1 0 auto;overflow:scroll;max-height:500px;">
                                 <div style="flex:0 0 140px;padding:10px;border:1px solid gray">
                                     <strong>欢迎来到云互联康复平台，在线咨询预约。</strong> <br />
-                                    <small> 厦门眼科中心主任亲自到院坐诊手术，拥有厦门同样的设备，专家，技术，更便捷的医保报销政策。 </small><br />
-                                    <small>网络预约近视手术预存3000元送5000元。 </small><br />
+                                    <small> 由山东理工大学医学团队为您服务，拥有优秀的设备，专家，技术，和更便捷的医保报销政策。 </small><br />
+                                    <small>网络预约预存3000元送5000元。 </small><br />
                                     <small>咨询热线：0594-2708888 </small><br />
                                     <small>我们的在线互动咨询人员会给您详尽细致的解答。</small><br />
                                 </div>
@@ -1309,8 +1309,8 @@
                                     <img src="./media/doctorIco.png" width="50px" height="50px" alt="">
                                     <div class="flex-column mx-start sx-start"
                                         style="margin:0 10px;flex: 1 1 auto;max-width: 700px;;height: 100px;">
-                                        眼科咨询预约888号 10-26 16:03:18<br />
-                                        <small>华厦眼科医院『三甲眼科中心分院，医保定点医院』院内有眼底、白内障、屈光权威专家定期坐诊。 征兵，高考 网络预约屈光手术可享最高优惠。
+                                        骨科咨询预约888号 10-26 16:03:18<br />
+                                        <small>山东理工大学附属医院『三甲分院，医保定点医院』院内有权威专家定期坐诊。 征兵，高考 网络预约可享最高优惠。
                                         </small>
                                     </div>
                                 </div>
@@ -1422,10 +1422,22 @@
         }, 4000);
     }
 
+    $("#sendmessage").keypress(function (even) {
+        if (even.which == 13) {
+            event.keyCode = 0; event.returnValue = false;
+            if ($('#sendmessage').val() == '') {
+                return;
+            }
+            $('#patientSend').click();
+            $('#sendmessage').val("");
+            $('#sendmessage').select();
+
+        }
+    });
     $('#patientSend').click(function () {
         var message = $('#sendmessage').val();
-        console.log(message);
-        var div = $("<div class=\"flex-row mx-start sx-center\"  style=\"flex:0 0 auto;align-self:flex-end;\" >" + message + " </div>");
+        if (message == "") return;
+        var div = $("<div class=\"flex-row mx-start sx-center\"  style=\"flex:0 0 auto;align-self:flex-end;\" >" + " </div>");
         var child1 = $("<div style=\"margin:0 10px;\">" + message + "</div>");
         var child2 = $("<img src=\"./media/pIco.png\" width=\"50px\" height=\"50px\"></img>");
         div.append(child1);
@@ -1433,7 +1445,8 @@
         $('#liaoTianContents').append(div);
         var top = $('#liaoTianContents').scrollTop();
         $('#liaoTianContents').scrollTop(top + 50);
-
+        $('#sendmessage').val("");
+        $('#sendmessage').select();
     })
 </script>
 
