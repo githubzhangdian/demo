@@ -132,9 +132,11 @@
     p {
         margin-bottom: 5px;
     }
-    #bottominfo a{
+    
+    #bottominfo a {
         color: white;
     }
+    
     #bottominfo a:hover {
         color: blue;
     }
@@ -243,7 +245,7 @@
 
 
     </div>
-    <div id="bottominfo" class="flex-txt-center" style="height: 40px;background-color: #4073a7;color: white;"> 友情链接，<a  href="http://www.dxy.cn">丁香园。</a><a href="www.sdut.edu.cn">山东理工大学</a></div>
+    <div id="bottominfo" class="flex-txt-center" style="height: 40px;background-color: #4073a7;color: white;"> 友情链接，<a href="http://www.dxy.cn">丁香园。</a><a href="www.sdut.edu.cn">山东理工大学</a></div>
 
 
 </body>
@@ -260,6 +262,7 @@
         $('#kangfuData').css({
             display: 'none'
         });
+        alert("请导入康复训练关节角度excle数据")
     })
 
     $('#robootnav').children('*').on('click', function() {
@@ -410,7 +413,7 @@
     };
 
     setInterval(function() {
-        suduoption.series[0].data[0].value = (Math.random() / 2 + 0.5).toFixed(2);
+        suduoption.series[0].data[0].value = (0.9 + ((Math.random() * 1) / 10)).toFixed(2);
         mysuduChart.setOption(suduoption, true);
     }, 1000);
 
@@ -452,7 +455,7 @@
 
     setInterval(function() {
         // xinlvption.series[0].data[0].value = ((Math.random() * 10) * 15).toFixed(2) - 0;
-        xinlvption.series[0].data[0].value = Math.floor((Math.random() * (130 - 120 + 1) + 120));
+        xinlvption.series[0].data[0].value = (119 + (Math.random() * 3)).toFixed(2);
         myxinlvChart.setOption(xinlvption, true);
     }, 1000);
 
@@ -501,7 +504,7 @@
         }
         dianchiChart.setOption(dianchioption, true);
 
-    }, 1000);
+    }, 2000);
     // }, 1000);
 </script>
 

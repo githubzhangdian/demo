@@ -175,9 +175,8 @@
 
             <!--left-top-->
             <div style="padding: 10px;margin-bottom: 10px;">
-                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1602774179995&di=71c9c4eb5242091da715035b1153a006&imgtype=0&src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F22%2F20200622133909_rftue.thumb.400_0.jpeg" width="80px"
-                    height="80px" alt="">
-                <div style="font-size: 14px;margin: 5px 0 0 10px;">张小明</div>
+                <img src="./images/patient.jpg" width="80px" height="80px" alt="">
+                <div style="font-size: 14px;margin: 5px 0 0 10px;">李丽莎（女）</div>
                 <div style="font-size: 14px;margin: 5px 0 0 10px;">患者</div>
             </div>
 
@@ -286,14 +285,13 @@
 
                             <div class="flex-row mx-start sx-stretch" style="flex:0 0 35px;;">
                                 <div style="width: 100px;height: 100px;border: 1px solid;">
-                                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1602774179995&di=71c9c4eb5242091da715035b1153a006&imgtype=0&src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F22%2F20200622133909_rftue.thumb.400_0.jpeg" width="100%"
-                                        height="100%" alt="">
+                                    <img src="./images/patient.jpg" width="100%" height="100%" alt="">
                                 </div>
                                 <div class="flex-row mx-center sx-center" style="flex: 0 0 50px;">
-                                    <span class="flex-txt-right-center" style="width: 83px;margin-right: 20px;">姓名:</span><span style="width: 135px;">张三</span>
+                                    <span class="flex-txt-right-center" style="width: 83px;margin-right: 20px;">姓名:</span><span style="width: 135px;">李丽莎</span>
                                 </div>
                                 <div class="flex-row mx-start sx-center" style="flex: 1;">
-                                    <span class="flex-txt-right-center" style="width: 229px;margin-right: 22px;">性别:</span><span style="width: 135px;">男</span>
+                                    <span class="flex-txt-right-center" style="width: 229px;margin-right: 22px;">性别:</span><span style="width: 135px;">女</span>
                                 </div>
                             </div>
                             <div class="flex-row mx-start sx-stretch" style="flex:0 0 35px;;">
@@ -405,6 +403,8 @@
                     </div>
                     <div class="div_hid">
                         <h1>当前康复计划</h1>
+
+
                     </div>
 
                 </div>
@@ -435,12 +435,16 @@
                                     <td>主动</td>
                                     <td>多功能下肢康复外骨骼</td>
                                     <td class="flex-row  ">
-                                        <div style="margin-right: 10px;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zM13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                                            </svg>
+                                        <div style="margin-right: 10px;">
+                                            <a data-toggle="tooltip" data-placement="top" title="点击查看在线机器人" href="robotIndex.html">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-reply-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.079 11.9l4.568-3.281a.719.719 0 0 0 0-1.238L9.079 4.1A.716.716 0 0 0 8 4.719V6c-1.5 0-6 0-7 8 2.5-4.5 7-4 7-4v1.281c0 .56.606.898 1.079.62z"/>
+                                                  </svg>
+                                            </a>
+
                                         </div>
-                                        <div><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-richtext" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <div>
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-richtext" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" />
                                                 <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z" />
@@ -461,12 +465,15 @@
                                     <td>主动</td>
                                     <td>多功能下肢康复外骨骼</td>
                                     <td class="flex-row  ">
-                                        <div style="margin-right: 10px;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zM13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                                            </svg>
+                                        <div style="margin-right: 10px;">
+                                            <a data-toggle="tooltip" data-placement="top" title="点击查看在线机器人" href="robotIndex.html">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-reply-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.079 11.9l4.568-3.281a.719.719 0 0 0 0-1.238L9.079 4.1A.716.716 0 0 0 8 4.719V6c-1.5 0-6 0-7 8 2.5-4.5 7-4 7-4v1.281c0 .56.606.898 1.079.62z"/>
+                                                  </svg>
+                                            </a>
                                         </div>
-                                        <div><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-richtext" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <div>
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-richtext" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" />
                                                 <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z" />
@@ -487,10 +494,12 @@
                                     <td>主动</td>
                                     <td>多功能下肢康复外骨骼</td>
                                     <td class="flex-row  ">
-                                        <div style="margin-right: 10px;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zM13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                                            </svg>
+                                        <div style="margin-right: 10px;">
+                                            <a data-toggle="tooltip" data-placement="top" title="点击查看在线机器人" href="robotIndex.html">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-reply-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9.079 11.9l4.568-3.281a.719.719 0 0 0 0-1.238L9.079 4.1A.716.716 0 0 0 8 4.719V6c-1.5 0-6 0-7 8 2.5-4.5 7-4 7-4v1.281c0 .56.606.898 1.079.62z"/>
+                                              </svg>
+                                            </a>
                                         </div>
                                         <div><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-richtext" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -513,10 +522,12 @@
                                     <td>主动</td>
                                     <td>多功能下肢康复外骨骼</td>
                                     <td class="flex-row  ">
-                                        <div style="margin-right: 10px;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zM13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                                            </svg>
+                                        <div style="margin-right: 10px;">
+                                            <a data-toggle="tooltip" data-placement="top" title="点击查看在线机器人" href="robotIndex.html">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-reply-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9.079 11.9l4.568-3.281a.719.719 0 0 0 0-1.238L9.079 4.1A.716.716 0 0 0 8 4.719V6c-1.5 0-6 0-7 8 2.5-4.5 7-4 7-4v1.281c0 .56.606.898 1.079.62z"/>
+                                              </svg>
+                                            </a>
                                         </div>
                                         <div><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-richtext" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -539,10 +550,12 @@
                                     <td>主动</td>
                                     <td>多功能下肢康复外骨骼</td>
                                     <td class="flex-row  ">
-                                        <div style="margin-right: 10px;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zM13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                                            </svg>
+                                        <div style="margin-right: 10px;">
+                                            <a data-toggle="tooltip" data-placement="top" title="点击查看在线机器人" href="robotIndex.html">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-reply-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9.079 11.9l4.568-3.281a.719.719 0 0 0 0-1.238L9.079 4.1A.716.716 0 0 0 8 4.719V6c-1.5 0-6 0-7 8 2.5-4.5 7-4 7-4v1.281c0 .56.606.898 1.079.62z"/>
+                                              </svg>
+                                            </a>
                                         </div>
                                         <div><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-richtext" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -612,6 +625,11 @@
                                             <option>一般</option>
                                             <option>不好</option>
                                           </select> </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <button type="submit" style="margin-right: 20px;width: 80px;" class="btn btn-primary">提交</button>
+                                    <button type="reset" style="margin-right: 20px;width: 80px;" class="btn btn-secondary">重置</button>
+
                                 </div>
 
                             </form>
@@ -749,13 +767,15 @@
 
 
 </body>
-<script src="./js/popper.js"></script>
+
 <script src="./js/jquery.js"></script>
+<script src="./js/popper.js"></script>
 <script src="./js/bootstrap.min.js"></script>
 <script src="./js/mymenu.js"></script>
 <script>
     $(function() {
         $('[data-toggle="popover"]').popover();
+        $('[data-toggle="tooltip"]').tooltip()
         showhid();
     })
 

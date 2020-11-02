@@ -79,21 +79,6 @@
         padding-left: 350px;
     }
     
-    .kv-item {
-        padding-left: 100px;
-        padding-bottom: 20px;
-    }
-    
-    .kv-label {
-        display: inline;
-        height: 28px;
-        line-height: 28px;
-        margin-left: -100px;
-        float: left;
-        text-align: right;
-        width: 100px;
-    }
-    
     .text-align {
         border: 1px solid #474E63;
         color: #0A1844;
@@ -125,9 +110,11 @@
     #personform div {
         margin: 10px;
     }
-    #bottominfo a{
+    
+    #bottominfo a {
         color: white;
     }
+    
     #bottominfo a:hover {
         color: blue;
     }
@@ -170,9 +157,8 @@
 
             <!--left-top-->
             <div style="padding: 10px;margin-bottom: 10px;">
-                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1602774179995&di=71c9c4eb5242091da715035b1153a006&imgtype=0&src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F22%2F20200622133909_rftue.thumb.400_0.jpeg" width="80px"
-                    height="80px" alt="">
-                <div style="font-size: 14px;margin: 5px 0 0 10px;">张小明</div>
+                <img src="./images/administrator.jpg" width="80px" height="80px" alt="">
+                <div style="font-size: 14px;margin: 5px 0 0 10px;">张小米</div>
                 <div>平台管理员</div>
             </div>
 
@@ -285,7 +271,7 @@
         </div>
         <!---------------------------------------------left区结束--------------------------------------------------------->
         <!------------------------------------------------首页--------------------------------------------------------->
-        <div id="index" class="flex-txt-center" style="flex:1 0 auto;border: 1px solid blueviolet;">
+        <div id="index" class="flex-txt-center" style="flex:1 0 auto;border: 1px solid blueviolet;background-color: #c9cfe0;">
             <div class="flex-txt-center">
                 <dl style="padding-left: 90px;width: 850px;">
                     <h1>尊敬的管理员，你好！</h1>
@@ -300,7 +286,7 @@
         </div>
 
         <!---------------------------------------------right区--------------------------------------------------------->
-        <div id='mycontent' class="flex-column mx-start sx-stretch div_hid" style="flex:1 0 auto; border:1px solid red">
+        <div id='mycontent' class="flex-column mx-start sx-stretch div_hid" style="flex:1 0 auto; border:1px solid blue">
 
             <!---------------------------------------------nav导航显示--------------------------------------------------------->
             <nav aria-label="breadcrumb">
@@ -313,76 +299,99 @@
             </nav>
 
             <!----content------->
-            <div id="content" class="flex-column mx-start sx-stretch" style="flex:1 0 auto;margin-left:10px;background-color: #f5f3ef;">
+            <div id="content" class="flex-column mx-start sx-stretch" style="flex:1 0 auto;margin-left:10px;background-color: #c9cfe0;">
 
                 <!----content-1---->
                 <div id="personWrap" class="flex-txt-center " style="flex:1 0 auto">
-                    <div class="flex-column mx-start sx-stretch" style="padding:20px;width: 400px;height:200px;font-size: 20px;">
-                        <div>用户名：张小米</div>
-                        <div>密码：1234556</div>
-                        <div>性别：男</div>
-                        <div>身份证号：4503311221333423</div>
+                    <div class="container flex-txt-center" style="font-size: 16px;">
+
+                        <div class="card" style="width: 400px;">
+                            <img src="./images/administrator.jpg" class="card-img-top" height="300px" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">超级管理员</h5>
+                                <div>用户名：张小米</div>
+                                <div>密码：1234556</div>
+                                <div>性别：男</div>
+                                <div>身份证号：4503311221333423</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="div_hid">
-                        <form name="personalForm" method="post" action="" onSubmit="return check(this)">
-                            <div class="kv-item">
-                                <span class="kv-label">
-                                <label class="tsl" for="username">用户名：</label>
-                                 </span>
-                                <input type="text" name="username" class="text-align" id="username" placeholder="*必填项" autofocus size="25" title="用户名">
+
+
+
+                    <div class="flex-column mx-center sx-center div_hid" style="flex:1;">
+                        <div class="page-header" style="margin: 20px;align-self: flex-start;">
+                            <h1>Hello, Administrator! <small>在这里修改您的个人信息哦！</small></h1>
+                        </div>
+                        <form id="personform" class="form-inline" role="form" style="width:800px;padding: 10px;border: 1px solid #b8b9b9;" method="post" action="" onSubmit="return check(this)">
+                            <div class="form-group">
+                                <label for="">姓名</label>
+                                <input type="text" class="form-control" value="张小明">
                             </div>
-                            <div class="kv-item">
-                                <span class="kv-label">
-                            <label class="tsl" for="pwd">密&nbsp;码：</label>
-                            </span>
-                                <input type="password" name="pwd" class="text-align" id="pwd" placeholder="*必填项" size="25" title="密码">
+                            <div class="form-group">
+                                <label for="">性别</label>
+                                <select class="form-control" name="" id="">
+                                    <option value="">男</option>
+                                    <option value="">女</option>
+
+                                </select>
                             </div>
-                            <div class="kv-item">
-                                <span class="kv-label">
-                            <label class="tsl" for="repwd">确认密码：</label>
-                            </span>
-                                <input type="password" name="repwd" class="text-align" id="repwd" placeholder="*必填项" size="25" title="确认密码">
+                            <div class="form-group">
+                                <label for="">电话号码</label>
+                                <input type="text" class="form-control" value="18593273310">
                             </div>
-                            <div class="kv-item">
-                                <span class="kv-label">
-                            <label class="tsl" for="repwd">证件号：</label>
-                            </span>
-                                <input type="password" name="repwd" class="text-align" id="repwd" placeholder="*必填项" size="25" title="身份证号">
-                            </div>
-                            <div class="kv-item">
-                                <span class="kv-label">
-                            <label class="tsl" for="sex_boy">性&nbsp;别：</label>
-                            </span>
-                                <input type="radio" name="sex" id="sex_boy" value="男" checked> 男
-                                <input type="radio" name="sex" id="sex_girl" value="女">女</div>
-                            <div class="kv-item">
-                                <span class="kv-label">
-                            <!-- <label class="tsl" for="student">职&nbsp;业：</label>
-                            </span>
-                                <select name="job">
-                            <option id="student" value="学生" selected="selected">学生</option>
-                            <option value="职员">职员</option>
-                            <option value="经理">经理</option>
-                            <option value="军人">军人</option>
-                            <option value="自由人">自由人</option>
-                            </select> -->
+                            <div class="form-group">
+                                <label for="">身份证号</label>
+                                <input type="text" class="form-control" value="450321199305063025">
                             </div>
 
-                            <div class="kv-item">
-                                <input type="submit" name="submit" id="submit" value="提交">
-                                <input type="reset" name="reset" id="reset" value="重置">
+                            <div class="form-group">
+                                <label for="">时间</label>
+                                <input type="date" class="form-control" value="2010-10-10">
                             </div>
+
+
+                            <div class="form-group">
+                                <label for="">所在地</label>
+                                <input type="text" class="form-control" value="山东省">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">所属医院</label>
+                                <input type="text" class="form-control" value="山东省人民医院">
+                            </div>
+                            <div class="form-group">
+                                <label for="">权限级别</label>
+                                <select class="form-control" name="" id="">
+                                    <option value="">管理员</option>
+                                    <option value="">用户</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">登录密码</label>
+                                <input type="password" class="form-control" placeholder="请输入登录密码">
+                            </div>
+                            <div class="form-group">
+                                <label for="">重复输入密码</label>
+                                <input type="password" class="form-control" value="123456">
+                            </div>
+                            <div class="form-group flex-txt-center" style="width: 100%;">
+                                <button type="submit" style="margin-right: 20px;width: 80px;" class="btn btn-primary">提交</button>
+                                <button type="reset" style="margin-right: 20px;width: 80px;" class="btn btn-secondary">重置</button>
+                            </div>
+
                         </form>
                     </div>
 
                 </div>
 
                 <!----content-2---->
-                <div id="yyglWrap" class="div_hid" style="flex:1 0 auto">
+                <div id="yyglWrap" class="div_hid" style="flex:1 0 auto;;">
                     <div>
                         <h1>医院信息查看</h1>
                     </div>
-                    <div class="flex-column mx-center sx-center div_hid" style="flex:1;">
+                    <div class="flex-column mx-center sx-center div_hid" style="flex:1;background-color: #c9cfe0">
                         <form id="personform" class="form-inline" role="form" style="width:660px;padding: 10px;" method="post" action="" onSubmit="return check(this)">
                             <div class="form-group">
                                 <label for="">医院编号</label>
@@ -464,7 +473,7 @@
         </div>
 
     </div>
-    <div id="bottominfo" class="flex-txt-center" style="height: 40px;background-color: #4073a7;color: white;"> 友情链接，<a  href="http://www.dxy.cn">丁香园。</a><a href="www.sdut.edu.cn">山东理工大学</a></div>
+    <div id="bottominfo" class="flex-txt-center" style="height: 40px;background-color: #4073a7;color: white;"> 友情链接，<a href="http://www.dxy.cn">丁香园。</a><a href="www.sdut.edu.cn">山东理工大学</a></div>
 
 
 </body>
