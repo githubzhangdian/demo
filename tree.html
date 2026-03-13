@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>夜空花树 · 先叶后花</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: #0a0f1a;
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            canvas {
+                display: block;
+                width: 800px;
+                height: 800px;
+                border-radius: 16px;
+                box-shadow: 0 0 0 1px #3f4d3f;
+                background-color: #0a0f1a;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="blossomCanvas" width="800" height="800"></canvas>
+        <script>
+            (function () {
+                const canvas = document.getElementById("blossomCanvas");
+                const ctx = canvas.getContext("2d");
+
+                // ---------- 参数 ----------
+                const ROOT_X = 400;
+                const ROOT_Y = 720;
+                const GROUND_TOP = 700;
+                const MAX_TRUNK_SEGMENTS = 8;
+                const SEGMENT_BASE_LEN = 70;
+                const CYCLE_DURATION = 6800;
+                const GROW_DURATION = 5200;
+
+                // 颜色
+                const NIGHT_SKY = "#0b101f";
+                const SKY_GRADIENT_TOP = "#1a2a3f";
+                const SKY_GRADIENT_BOTTOM = "#030514";
+                const GROUND_DARK = "#3d2f1f";
+                const GROUND_LIGHT = "#6a4f34";
+                const TRUNK_COLOR = "#6f4f35";
+                const TRUNK_DARK = "#4f3822";
+                const BRANCH_COLOR = "#8b6b4b";
+                const FLOWER_MAIN = "#ffb7c5";
+                const FLOWER_CENTER = "#fce694";
+                const FLOWER_SHADE = "#e68a9a";
+                const LEAF_COLOR = "#87a96b";
+                const LEAF_LIGHT = "#b1cf8a";
+
+                let animationFrame;
+                let startTime = performance.now();
+
+                // 夜空
+                function drawNightSky() {
+                    const gradient = ctx.createLinearGradient(0, 0, 0, 800);
+                    gradient.addColorStop(0, SKY_GRADIENT_TOP);
+                    gradient.addColorStop(0.7, SKY_GRADIENT_BOTTOM);
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(0, 0, 800, GROUND_TOP - 5);
+
+                    ctx.save();
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = "#ffffff";
+                    for (let i = 0; i < 150; i++) {
+                        let x = ((i * 31) % 780) + 10;
+                        let y = ((i * 19) % 500) + 15;
+                        let size = 0.8 + Math.sin(i) * 0.6;
+                        if (x > 300 && x < 500 && y > 200 && y < 550) continue;
+                        ctx.beginPath();
+                        ctx.arc(x, y, size * 0.7, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(255, 245, 210, ${0.6 + Math.sin(i * 2 + Date.now() * 0.002) * 0.15})`;
+                        ctx.fill();
+                    }
+                    ctx.shadowBlur = 15;
+                    ctx.fillStyle = "#fffde7";
+                    ctx.beginPath();
+                    ctx.arc(150, 120, 3.5, 0, 2 * Math.PI);
+                    ctx.fill();
+                    ctx.beginPath();
+                    ctx.arc(650, 200, 4.0, 0, 2 * Math.PI);
+                    ctx.fill();
+                    ctx.restore();
+                }
+
+                // 土壤
+                function drawNightGround() {
+                    ctx.fillStyle = GROUND_DARK;
+                    ctx.fillRect(0, GROUND_TOP, 800, 800 - GROUND_TOP);
+
+                    ctx.fillStyle = "#4f3c28";
+                    for (let i = 0; i < 100; i++) {
+                        let x = (i * 23) % 800;
+                        let y = GROUND_TOP + ((i * 11) % 80);
+                        ctx.beginPath();
+                        ctx.arc(x, y, 2 + (i % 4), 0, Math.PI * 2);
+                        ctx.fillStyle = "#826b4a";
+                        ctx.shadowBlur = 6;
+                        ctx.shadowColor = "#1f170e";
+                        ctx.fill();
+                    }
+
+                    ctx.shadowBlur = 4;
+                    ctx.fillStyle = "#645035";
+                    for (let s = 0; s < 24; s++) {
+                        let sx = 30 + s * 32;
+                        let sy = GROUND_TOP + 15 + (s % 5) * 8;
+                        ctx.beginPath();
+                        ctx.ellipse(sx, sy, 7, 3.5, 0, 0, Math.PI * 2);
+                        ctx.fillStyle = "#7b6242";
+                        ctx.fill();
+                    }
+
+                    ctx.shadowBlur = 3;
+                    ctx.strokeStyle = "#5f734a";
+                    ctx.lineWidth = 2.2;
+                    for (let g = 0; g < 12; g++) {
+                        let gx = 50 + g * 65;
+                        let gy = GROUND_TOP - 4;
+                        ctx.beginPath();
+                        ctx.moveTo(gx, gy);
+                        ctx.quadraticCurveTo(gx - 18, gy - 25, gx - 30, gy - 30);
+                        ctx.strokeStyle = "#50653c";
+                        ctx.stroke();
+                    }
+                    ctx.shadowBlur = 0;
+                    ctx.shadowColor = "transparent";
+                }
+
+                // 绘制树枝与花叶 (修改点：花朵延迟到进度≥0.9才出现)
+                function drawBranches(x, y, len, angle, thickness, depth, maxDepth, progress) {
+                    if (len < 6 || thickness < 0.6) return;
+
+                    const depthThreshold = depth * 0.1;
+                    if (progress < depthThreshold) return;
+
+                    const drawLen = len * progress;
+                    const endX = x + Math.cos(angle) * drawLen;
+                    const endY = y + Math.sin(angle) * drawLen;
+
+                    // 画枝干
+                    ctx.save();
+                    ctx.shadowColor = "#1a1a0f";
+                    ctx.shadowBlur = 10;
+                    ctx.shadowOffsetY = 3;
+                    ctx.beginPath();
+                    ctx.moveTo(x, y);
+                    ctx.lineTo(endX, endY);
+                    ctx.strokeStyle = depth === 0 ? TRUNK_COLOR : BRANCH_COLOR;
+                    ctx.lineWidth = thickness * (0.9 + 0.2 * progress);
+                    ctx.lineCap = "round";
+                    ctx.stroke();
+
+                    ctx.shadowBlur = 5;
+                    ctx.beginPath();
+                    ctx.moveTo(x + 0.8, y - 0.8);
+                    ctx.lineTo(endX + 1.2, endY - 1.2);
+                    ctx.strokeStyle = "#c29f7a";
+                    ctx.lineWidth = thickness * 0.3;
+                    ctx.stroke();
+                    ctx.restore();
+
+                    // ---- 叶子 (在枝干中间) ----
+                    // 叶子始终生长，不受开花延迟影响
+                    if (depth >= 1) {
+                        for (let l = 0; l < 2; l++) {
+                            let t = 0.3 + l * 0.4;
+                            let lx = x + (endX - x) * t;
+                            let ly = y + (endY - y) * t;
+                            let leafSize = 4 + depth * 1.5 + progress * 3;
+                            ctx.save();
+                            ctx.shadowBlur = 10;
+                            ctx.shadowColor = "#b0d18b";
+                            ctx.fillStyle = l % 2 === 0 ? LEAF_COLOR : LEAF_LIGHT;
+                            ctx.beginPath();
+                            ctx.ellipse(
+                                lx,
+                                ly,
+                                leafSize * 1.0,
+                                leafSize * 0.5,
+                                angle + 0.3,
+                                0,
+                                2 * Math.PI,
+                            );
+                            ctx.fill();
+                            ctx.restore();
+                        }
+                    }
+
+                    // ---- 花朵 (延迟开放) ----
+                    // 计算开花进度因子：progress 0.9~1.0 之间从0到1线性增加，之前为0
+                    const bloomStart = 0.9; // 开始开花的进度阈值
+                    let bloomFactor = 0;
+                    if (progress >= bloomStart) {
+                        bloomFactor = (progress - bloomStart) / (1 - bloomStart);
+                    }
+                    // 只有深度足够且开花因子>0时才绘制花朵
+                    if (depth >= 2 && bloomFactor > 0) {
+                        const flowerSize = (5.0 + depth * 2.0 + progress * 4) * bloomFactor; // 花朵大小随开花因子放大
+                        ctx.save();
+                        ctx.shadowBlur = 18;
+                        ctx.shadowColor = "#ffb7c5";
+                        ctx.beginPath();
+                        ctx.arc(endX, endY, flowerSize * 0.7, 0, 2 * Math.PI);
+                        ctx.fillStyle = FLOWER_MAIN;
+                        ctx.fill();
+                        ctx.shadowBlur = 10;
+                        ctx.beginPath();
+                        ctx.arc(endX - 1.5, endY - 1.5, flowerSize * 0.3, 0, 2 * Math.PI);
+                        ctx.fillStyle = FLOWER_CENTER;
+                        ctx.fill();
+                        for (let p = 0; p < 5; p++) {
+                            let angleP = (p * 2 * Math.PI) / 5 + Date.now() * 0.001;
+                            let px = endX + Math.cos(angleP) * flowerSize * 0.9;
+                            let py = endY + Math.sin(angleP) * flowerSize * 0.8;
+                            ctx.beginPath();
+                            ctx.arc(px, py, flowerSize * 0.4, 0, 2 * Math.PI);
+                            ctx.fillStyle = FLOWER_SHADE;
+                            ctx.fill();
+                        }
+                        if (depth >= 3) {
+                            ctx.beginPath();
+                            ctx.arc(endX - 4, endY - 3, flowerSize * 0.25, 0, 2 * Math.PI);
+                            ctx.fillStyle = "#ffa0b0";
+                            ctx.fill();
+                        }
+                        ctx.restore();
+
+                        // 花旁小叶 (也随开花因子出现)
+                        ctx.save();
+                        ctx.shadowBlur = 8;
+                        ctx.fillStyle = LEAF_LIGHT;
+                        ctx.beginPath();
+                        ctx.ellipse(
+                            endX - 7,
+                            endY - 6,
+                            4 * bloomFactor,
+                            2 * bloomFactor,
+                            angle - 0.2,
+                            0,
+                            2 * Math.PI,
+                        );
+                        ctx.fill();
+                        ctx.restore();
+                    } else if (depth === 1 && progress > 0.45) {
+                        // 深度1处的叶子（非花朵区域）正常生长
+                        ctx.save();
+                        ctx.shadowBlur = 8;
+                        ctx.fillStyle = LEAF_COLOR;
+                        ctx.beginPath();
+                        ctx.ellipse(endX - 3, endY - 3, 5, 2.5, angle, 0, 2 * Math.PI);
+                        ctx.fill();
+                        ctx.restore();
+                    }
+
+                    // 递归子分支
+                    if (depth < maxDepth && drawLen > 10 && progress > depthThreshold + 0.06) {
+                        let childCount = depth === 0 ? 2 : depth === 1 ? 3 : 2;
+                        for (let c = 0; c < childCount; c++) {
+                            let baseOffset;
+                            if (childCount === 2) {
+                                baseOffset = c === 0 ? -15 : 20;
+                            } else {
+                                baseOffset = c === 0 ? -18 : c === 1 ? 22 : 5;
+                            }
+                            let childAngle =
+                                angle +
+                                ((baseOffset + 5 * Math.sin(depth * 1.5 + c)) * Math.PI) / 180;
+                            while (childAngle > Math.PI) childAngle -= 2 * Math.PI;
+                            while (childAngle < -Math.PI) childAngle += 2 * Math.PI;
+                            if (childAngle > 0.5) childAngle = 0.5;
+                            if (childAngle < -Math.PI + 0.5) childAngle = -Math.PI + 0.5;
+
+                            let childLen = drawLen * (0.85 + 0.12 * c + 0.06 * depth);
+                            if (childLen > 80) childLen = 80;
+                            let childThick = thickness * 0.62;
+                            if (childLen < 8) continue;
+                            drawBranches(
+                                endX,
+                                endY,
+                                childLen,
+                                childAngle,
+                                childThick,
+                                depth + 1,
+                                maxDepth,
+                                progress,
+                            );
+                        }
+                    }
+                }
+
+                // 绘制主干
+                function drawTree(progress) {
+                    const p = Math.min(1, Math.max(0, progress));
+
+                    let currentX = ROOT_X;
+                    let currentY = ROOT_Y;
+                    let currentAngle = -Math.PI / 2;
+
+                    const segmentAngles = [-1.2, 1.8, -1.5, 2.0, -1.0, 1.5, -0.8, 1.2];
+
+                    for (let seg = 0; seg < MAX_TRUNK_SEGMENTS; seg++) {
+                        if (seg < segmentAngles.length) {
+                            currentAngle += (segmentAngles[seg] * Math.PI) / 180;
+                        }
+
+                        const endX = currentX + Math.cos(currentAngle) * (SEGMENT_BASE_LEN * p);
+                        const endY = currentY + Math.sin(currentAngle) * (SEGMENT_BASE_LEN * p);
+
+                        ctx.save();
+                        ctx.shadowColor = "#302011";
+                        ctx.shadowBlur = 18;
+                        ctx.shadowOffsetY = 4;
+                        ctx.beginPath();
+                        ctx.moveTo(currentX, currentY);
+                        ctx.lineTo(endX, endY);
+                        ctx.strokeStyle = TRUNK_COLOR;
+                        ctx.lineWidth = 16 * (1 - seg * 0.1) * (0.7 + 0.3 * p);
+                        ctx.lineCap = "round";
+                        ctx.stroke();
+                        ctx.restore();
+
+                        if (seg >= 1 && p > 0.12) {
+                            let branchCount = seg % 2 === 0 ? 3 : 2;
+                            for (let b = 0; b < branchCount; b++) {
+                                let branchAngle;
+                                if (branchCount === 2) {
+                                    branchAngle =
+                                        currentAngle + ((b === 0 ? -20 : 25) * Math.PI) / 180;
+                                } else {
+                                    branchAngle =
+                                        currentAngle +
+                                        ((b === 0 ? -22 : b === 1 ? 26 : 8) * Math.PI) / 180;
+                                }
+                                let branchLen = SEGMENT_BASE_LEN * p * (0.65 + b * 0.15);
+                                let branchThick = 8.0 * (1 - seg * 0.1) * p;
+                                drawBranches(
+                                    currentX,
+                                    currentY,
+                                    branchLen,
+                                    branchAngle,
+                                    branchThick,
+                                    1,
+                                    5,
+                                    p,
+                                );
+                            }
+                        }
+
+                        currentX = endX;
+                        currentY = endY;
+                    }
+
+                    // 顶部不再添加小枝
+                }
+
+                function drawFrame(progress) {
+                    drawNightSky();
+                    drawNightGround();
+                    drawTree(progress);
+
+                    // 飘浮光点
+                    ctx.save();
+                    ctx.shadowBlur = 24;
+                    ctx.shadowColor = "#fffed5";
+                    for (let f = 0; f < 12; f++) {
+                        let fx = 200 + f * 50 + Math.sin(Date.now() * 0.002 + f) * 20;
+                        let fy = 250 + f * 40 + Math.cos(Date.now() * 0.0017 + f) * 15;
+                        ctx.beginPath();
+                        ctx.arc(fx, fy, 3.5, 0, 2 * Math.PI);
+                        ctx.fillStyle = `rgba(255, 240, 180, ${0.5 + 0.2 * Math.sin(Date.now() * 0.005 + f)})`;
+                        ctx.fill();
+                    }
+                    ctx.restore();
+                }
+
+                function animate() {
+                    const now = performance.now();
+                    const elapsed = (now - startTime) % CYCLE_DURATION;
+
+                    let progress;
+                    if (elapsed < GROW_DURATION) {
+                        progress = elapsed / GROW_DURATION;
+                    } else {
+                        progress = 1.0;
+                    }
+
+                    drawFrame(progress);
+
+                    animationFrame = requestAnimationFrame(animate);
+                }
+
+                animationFrame = requestAnimationFrame(animate);
+
+                canvas.addEventListener("click", () => {
+                    startTime = performance.now();
+                });
+
+                window.addEventListener("beforeunload", () => {
+                    if (animationFrame) cancelAnimationFrame(animationFrame);
+                });
+            })();
+        </script>
+    </body>
+</html>
