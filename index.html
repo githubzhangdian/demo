@@ -1,270 +1,661 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>致我最爱的黎翠姣 · 结婚三周年纪念</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                font-family: "Noto Sans SC", system-ui, sans-serif;
+                overflow-x: hidden;
+                background: linear-gradient(to bottom, #fff5f7, #fff0f5, #fff8f0);
+            }
+            h1,
+            h2 {
+                font-family: "Noto Serif SC", Georgia, serif;
+            }
+            .fade-in {
+                opacity: 0;
+                transform: translateY(60px);
+                transition: all 1.4s ease-out;
+            }
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            #music-toggle {
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                z-index: 999;
+            }
 
-<head>
-    <meta charset="utf-8">
-    <title>云互联康复平台</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/video.css" rel="stylesheet" />
-    <!-- <link href="https://unpkg.com/@videojs/themes@1/dist/sea/index.css" rel="stylesheet" /> -->
-    <!-- <link href="https://unpkg.com/@videojs/themes@1/dist/forest/index.css" rel="stylesheet"> -->
-    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
-    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-	
-	<!--<script src="./js/测量小工具.js"></script>-->
+            @keyframes breathe {
+                0%,
+                100% {
+                    transform: scale(1);
+                    text-shadow: 0 0 10px rgba(244, 63, 94, 0.4);
+                }
+                50% {
+                    transform: scale(1.1);
+                    text-shadow: 0 0 25px rgba(244, 63, 94, 0.7);
+                }
+            }
+            .breathe-glow {
+                animation: breathe 8s ease-in-out infinite;
+            }
 
+            @keyframes heartbeat {
+                0%,
+                100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.12);
+                }
+            }
+            .btn-heartbeat:hover {
+                animation: heartbeat 1.5s infinite;
+                box-shadow: 0 0 30px rgba(244, 63, 94, 0.6);
+            }
 
-</head>
-<style>
-    html,
-    body {
-        height: 100%;
-        width: 100%;
-    }
-    
-    * {
-        margin: 0px;
-        padding: 0px;
-    }
-    
-    a:hover {
-        text-decoration: none;
-        color: red;
-    }
-    
-    a {
-        color: #4073a7
-    }
-    
-    #bottominfo a {
-        color: white;
-    }
-    
-    #bottominfo a:hover {
-        color: blue;
-    }
-</style>
+            .letter-line {
+                display: block;
+                opacity: 0;
+                transform: translateY(-50px);
+                transition: all 1s ease-out;
+                text-shadow:
+                    0 0 18px rgba(255, 255, 255, 0.8),
+                    0 0 30px rgba(244, 63, 94, 0.5);
+                margin-bottom: 1.5em;
+            }
+            .letter-line.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .letter-char {
+                display: inline-block;
+                opacity: 0;
+                transform: translateY(-30px) scale(0.9);
+                transition: all 0.5s ease-out;
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+            }
+            .letter-char.visible {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
 
-<body style="background: #ebebec;">
-    <!--title--------------------------------------------------------->
-    <nav class="navbar navbar-expand-lg navbar-light " style="height: 37px;margin-bottom: 5px;
-    background-image: linear-gradient(to bottom, #0838c3 40%, #678dc5 85%,white 100%)">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+            /* 照片区域样式 */
+            .photo-container {
+                max-width: 800px;
+                margin: 2rem auto;
+                padding: 1rem;
+                background: rgba(255, 255, 255, 0.4);
+                border-radius: 16px;
+                box-shadow: 0 8px 32px rgba(244, 63, 94, 0.1);
+            }
+            .photo-container svg {
+                width: 100%;
+                height: auto;
+                border-radius: 12px;
+            }
+            /* 照片进入动画 - 不同方向 */
+            .photo-container {
+                opacity: 0;
+                transform: translateY(60px) scale(0.92);
+                transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+                will-change: transform, opacity;
+            }
+
+            .photo-container.visible-from-left {
+                transform: translateX(-80px) scale(0.92);
+            }
+            .photo-container.visible-from-right {
+                transform: translateX(80px) scale(0.92);
+            }
+            .photo-container.visible-from-top {
+                transform: translateY(-100px) scale(0.9);
+            }
+
+            .photo-container.visible {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+
+            /* 描述文字也延迟出现 */
+            .photo-container p {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.9s ease-out 0.4s;
+            }
+
+            .photo-container.visible p {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* hover 时轻微放大 + 浪漫光晕 */
+            .photo-container img {
+                transition: all 0.6s ease;
+                box-shadow: 0 4px 20px rgba(244, 63, 94, 0.15);
+                border: 1px solid rgba(255, 255, 255, 0.4);
+            }
+
+            .photo-container:hover img {
+                transform: scale(1.04);
+                box-shadow: 0 12px 40px rgba(244, 63, 94, 0.35);
+            }
+
+            /* 给时间线标题加一点呼吸感 */
+            .time-title {
+                animation: soft-breathe 10s ease-in-out infinite;
+            }
+
+            @keyframes soft-breathe {
+                0%,
+                100% {
+                    text-shadow: 0 0 10px rgba(244, 63, 94, 0.3);
+                }
+                50% {
+                    text-shadow: 0 0 24px rgba(244, 63, 94, 0.6);
+                }
+            }
+        </style>
+    </head>
+    <body class="text-gray-800">
+        <!-- 音乐和按钮（不变） -->
+        <audio id="bgm" loop>
+            <source
+                src="http://music.163.com/song/media/outer/url?id=2147718240.mp3"
+                type="audio/mpeg"
+            />
+        </audio>
+        <button
+            id="music-toggle"
+            class="bg-white/80 hover:bg-white px-5 py-3 rounded-full shadow-xl text-pink-600 font-medium flex items-center gap-3 fixed bottom-6 left-6 z-50"
+        >
+            <span id="music-text"></span>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"
+                ></path>
+            </svg>
         </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <svg width="1.5em" height="1.5em" style="color: #e4f0f7;" viewBox="0 0 16 16" class="bi bi-receipt-cutoff" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v13h-1V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51L2 2.118V15H1V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zM0 15.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-                <path fill-rule="evenodd" d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-8a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
-              </svg>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" style="color: white;" href="#">科技让生活更美好 <span class="sr-only">(current)</span></a>
-                </li>
 
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <div style="font-size: 13px;color:#484141;margin-right: 10px;color: white;">你好有问题请联系我们。</div>
-                <div data-container="body" data-toggle="popover" data-placement="bottom" data-content="QQ:546258425">
-                    <img src="media/qq.png" width="25px" height="25px" alt="">
-                    <span style="color: white;font-size: 10px;">QQ交流</span>
-
-                </div>
-            </form>
-        </div>
-    </nav>
-    <!--title---------------------------------------------------------------->
-    <!--nav-->
-    <nav id="nav" class="nav nav-pills flex-column flex-sm-row" style="width: 80%;max-width: 1200px;;margin:0 auto;background-color: #3d80c3;color: white;">
-        <a class="flex-sm-fill text-sm-center nav-link active" style="color: white;" href="#">首页</a>
-        <a class="flex-sm-fill text-sm-center nav-link" style="color: white;" href="robotIndex.html">康复设备</a>
-        <a class="flex-sm-fill text-sm-center nav-link" style="color: white;" href="#">康复专家</a>
-        <a class="flex-sm-fill text-sm-center nav-link " style="color: white;" href="#">康复知识库</a>
-        <a class="flex-sm-fill text-sm-center nav-link " style="color: white;" href="#">关于我们</a>
-
-    </nav>
-    <!--nav-->
-
-    <!---main-->
-    <div id="index" class="flex-column mx-start sx-stretch" style="width: 80%;max-width: 1200px;margin:0 auto;">
-        <div class="flex-row mx-start sx-start" style="padding: 10px;margin-top: 10px;background-color: #76b8e826;">
-            <div style="width:525px; height:290px;border: 1px solid #80808070;margin-top: 10px;">
-                <video id="myvideo" class="video-js vjs-big-play-centered" style="width: 100%;height: 100%;object-fit: fill;" controls preload="auto" poster="./media/LOGO.png" data-setup="{}">
-                    <source src="./media/show1.mp4" type="video/mp4" />
+        <!-- 开场 -->
+        <section
+            id="cover"
+            class="min-h-screen flex flex-col items-center justify-center relative text-center px-6"
+        >
+            <div class="absolute inset-0 z-0">
+                <img
+                    class="w-full h-full object-cover opacity-90"
+                    src="https://t.tutu.to/img/ucsrh"
+                />
             </div>
-            <div class="flex-txt-center" style="flex:1;">
-                <div class="flex-column mx-start mx-stretch" >
-                    <div style="border: 1px solid #80808070;padding: 20px;border-radius: 10px;">
-                        <h3 style="color: green;">云互联康复平台</h3>
-                        <p style="font-size: 14px;padding:0;">您好，欢迎使用！</p>
-                        <form id="myform" onSubmit="return false;">
-                            <div class="flex-row mx-center sx-center" >
-                                <div class="flex-txt-right-center" style="flex: 0 0 auto;width: 50px;margin-right: 10px;" >角色</div>
-                                <select style="height: 30px;padding: 0;" class="form-control" id="exampleFormControlSelect1" name="role">
-                                    <option style="font-size: 16px;">医生</option>
-                                    <option style="font-size: 16px;">患者</option>
-                                    <option style="font-size: 16px;">管理员</option>
-                                </select>
-                            </div>
-            
-                            <div class=" flex-row mx-center sx-center">
-                                <div class="flex-txt-right-center" for="exampleInputEmail1" style="flex:0 0 auto;width: 50px;margin-right: 10px;">用户名</div>
-                                <input style="height: 30px;margin: 10px 0;" type="text" class="form-control" placeholder="请输入用户名" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                    name="name">
-                            </div>
-                            <div class="flex-row mx-center sx-center">
-                                <div class="flex-txt-right-center" for="exampleInputPassword1" style="flex: 0 0 auto;margin-right: 10px;width: 50px;">密码</div>
-                                <input style="height: 30px;" type="password" class="form-control" placeholder="请输入密码" id="exampleInputPassword1" name="password">
-                            </div>
-                            <div class="flex-row mx-start sx-center" style="margin: 10px 0;">
-                                <div class="flex-txt-right-center" style="flex:0 0 auto;width: 50px;margin-right: 10px;;">验证码</div>
-                                <input type="text" class="form-control" placeholder="验证码" style="width: 100px;height: 32px;">
-                                <div class="flex-txt-center" style="width: 131px;height:52px;border: 1px solid #ced4da;border-radius: 5px;margin: 0 10px;">
-                                <img id="yanzma" width="100%" height="100%" alt="">
-                                </div>
-                            </div>
-                            <div style="width:200px;">
-                                <button id="loginBtn" type="button" class="btn btn-outline-primary" style="width: 80px;padding:0px;height: 30px;">登录</button>
-                                <button id="registerBtn" type="button" class="btn btn-outline-info" style="width: 80px;padding:0px;height: 30px;">注册</button>
-                            </div>
-                        </form>
+            <div class="relative z-10">
+                <h1 class="text-5xl md:text-7xl font-bold text-pink-700 mb-8 breathe-glow">
+                    亲爱的黎翠姣
+                </h1>
+                <p class="text-3xl md:text-5xl text-rose-600 mb-10 breathe-glow">结婚三周年快乐</p>
+                <p class="text-xl md:text-3xl text-gray-700 mb-16">
+                    2023年农历二月二十四 —— 2026年农历二月二十四
+                </p>
+                <button
+                    id="enter-btn"
+                    class="btn-heartbeat bg-gradient-to-r from-amber-400 via-pink-500 to-rose-500 text-white px-12 py-6 rounded-full text-2xl shadow-2xl transform transition-all duration-500"
+                >
+                    进入我们的故事 →
+                </button>
+            </div>
+        </section>
+
+        <!-- 主内容 -->
+        <main id="main" class="hidden relative">
+            <canvas id="fireworks" class="fixed inset-0 pointer-events-none z-0"></canvas>
+            <canvas id="hearts" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+            <!-- Hero -->
+            <section class="min-h-screen flex items-center justify-center py-24 px-6">
+                <div class="max-w-4xl text-center">
+                    <h2
+                        class="text-5xl md:text-6xl font-bold text-pink-600 mb-12 breathe-glow fade-in"
+                    >
+                        三年的光阴，因为有你，让这个家充满欢声笑语
+                    </h2>
+                    <p
+                        class="text-2xl md:text-3xl leading-relaxed fade-in"
+                        style="color: #87b7e9b3"
+                    >
+                        翠姣，我最亲爱的老婆，谢谢你选择了我，谢谢你陪我走过这三年最珍贵的时光。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 时间线 + 照片区（新增你的家庭照片示例） -->
+            <section class="py-20 px-6 max-w-5xl mx-auto space-y-24">
+                <div class="fade-in text-center">
+                    <h2 class="text-4xl font-bold text-rose-700 mb-12 breathe-glow">
+                        2022年9月我们开始相恋.....
+                    </h2>
+
+                    <!-- 照片1：恋爱/求婚/结婚照 visible-from-left fade-in-->
+                    <div class="photo-container fade-in">
+                        <!-- 这里替换成你的SVG base64 或 <image xlink:href="data:image/..."> -->
+                        <img style="border-radius: 10px" src="https://t.tutu.to/img/ucHp6" />
+
+                        <p class="mt-4 text-lg" style="color: #ffca2e">
+                            我们相遇、相恋的那段甜蜜时光、真的太短了好怀念啊！
+                        </p>
+                    </div>
+
+                    <!-- 照片2：结婚照 visible-from-right fade-in -->
+                    <div class="photo-container fade-in">
+                        <img style="border-radius: 10px" src="https://t.tutu.to/img/ucEBQ" />
+                        <p class="mt-4 text-lg" style="color: #ffca2e">
+                            2023年农历二月二十四，我们结婚了
+                        </p>
+                    </div>
+                    <!-- visible-from-left fade-in -->
+                    <div class="photo-container fade-in">
+                        <img style="border-radius: 10px" src="https://t.tutu.to/img/ucGl5" />
+
+                        <p class="mt-4 text-lg" style="color: #ffca2e">
+                            宁宁我们的大宝贝，2023年农历八月二十八出生
+                        </p>
+                    </div>
+                    <!-- 照片3：一家四口 -->
+                    <div class="photo-container fade-in">
+                        <img style="border-radius: 10px" src="https://t.tutu.to/img/ucXjr" />
+                        <p class="mt-4 text-lg" style="color: #ffca2e">
+                            涵薇我们的小宝贝，2025年农历十一月二十八出生
+                        </p>
+                    </div>
+                    <div class="photo-container fade-in">
+                        <img style="border-radius: 10px" src="https://t.tutu.to/img/ucToB" />
+                        <p class="mt-4 text-lg" style="color: #ffca2e">
+                            哥哥和妹妹，让我们的家更圆满
+                        </p>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="flex-row mx-start sx-stretch" style="height:600px;">
-            <div class="flex-column mx-start sx-stretch" style="flex: 1;margin-right: 10px;">
-                <div style="border-bottom:3px solid #4073a7; color: #4073a7;margin-bottom: 15px;padding: 5px;">康复资讯</div>
-                <div id="zixun" class="flex-column mx-start sx-stretch" style="flex:1;max-width:460px;border: 1px solid #cbd2d0;padding: 8px;">
-                    <div style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap;"><a  href="https://www.lieyunwang.com/archives/466502" >1:傅利叶智能收购瑞和康医疗，推动康复医疗产业持续发展</a></div>
-                    <div  style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap;"><a href="https://www.lieyunwang.com/archives/454163">2:聚焦专业康复领域，瑞哈比利推出运动康复定制计划</a></div>
-                    <div  style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap;"><a href="https://www.lieyunwang.com/archives/451166">3:傅利叶开放平台正式首发：做外骨骼机器人领域的“安卓系统”</a></div>
-                    <div  style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap;"><a href="https://www.lieyunwang.com/archives/447748" >4:以外骨骼康复机器人为载体，程天科技帮助行动障碍者重获行动能力</a></div>
-                    <div style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap;"><a  href="https://www.lieyunwang.com/archives/227154" >5:术康在上海成都设立线下医学康复中心，为用户提供更全面治疗方案</a></div>
-                    <div  style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap;"><a href="#" >6:广西已进入人口老龄化社会，但养老护理员缺口数十万！</a></div></li>
-                    <div  style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap;"><a href="https://www.lieyunwang.com/archives/209318" >7:动能趋势构建医体结合生态平台系统宣讲会在京召开</a></div> 
-                    <div  style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap;"><a href="https://www.lieyunwang.com/archives/104246" >8:康复治疗也要O2O，99爱康主打线下治疗+视频指导</a></div>
-                    <div  style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap;"><a href="#" >9:企业开年薪20万招养老人才 “夕阳红”成朝阳产业</a></div>
-                    <div  style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap;"><a href="http://www.yikangshiye.com/news/news2_100000020841591.html" >10:康复训练是主动好，还是被动好？</a></div>
-                    <div  style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap;"><a href="#" >11:国内首款下肢康复训练机器人将用于临床</a></div>
-                    <div  style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap;"><a href="#" >12:下肢康复训练机器人帮忙 康复训练变得有趣了</a></div>
-
-                </div>
-            </div>
-            <div class="flex-column mx-start sx-stretch" style="flex: 0 0 700px;">
-                <div style="border-bottom:3px solid  #4073a7; color: #4073a7;margin-bottom: 15px;padding: 5px;">设备展示</div>
-                <div class="flex-txt-center"  style="flex:1 1 auto;border:1px solid #cbd2d0;padding:10px;">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%;height: 500px;">
-                        <ol class="carousel-indicators" >
-                          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner" style="width: 100%;height: 100%;">
-                          <div class="carousel-item active" style="width: 100%;height: 100%;
-                          background-image: url('./media/lunyi1.JPG');
-                          background-repeat: no-repeat;
-                          background-position: center center;
-                          background-size: contain;
-                          "></div>
-                          <div class="carousel-item" style="width: 100%;height: 100%;
-                          background-image: url('./media/lunyi2.JPG');
-                          background-repeat: no-repeat;
-                          background-position: center center;
-                          background-size: contain;
-                          "></div>
-                          <div class="carousel-item" style="width: 100%;height: 100%;
-                          background-image: url('./media/lunyi3.JPG');
-                          background-repeat: no-repeat;
-                          background-position: center center;
-                          background-size: contain;
-                          "></div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                        </a>
+                <!-- 信件 - 洒落效果，无背景 -->
+                <section class="py-32 px-6 min-h-screen flex items-center justify-center">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <h2
+                            class="text-5xl md:text-6xl font-bold text-rose-700 mb-20 tracking-wide breathe-glow"
+                        >
+                            写给最爱的你
+                        </h2>
+                        <div
+                            id="letter"
+                            class="text-xl md:text-2xl leading-loose font-serif mx-auto max-w-3xl"
+                            style="color: #ffd8e5"
+                        ></div>
                     </div>
-                </div>
-                
-            </div>
-        </div>
-        <div style="border-bottom:3px solid  #4073a7; color: #4073a7;margin:10px 0 0px 0;padding: 5px;">关于我们</div>
-        <div  class="flex-txt-center" style="height: 60px;padding: 5px;font-size: 14px;">本网站一切内容都是为了更好的服务康复患者，不保证所有信息、图片、视频、链接及其他项目绝对的准确性和完整性，也并不意味着赞同其观点或证实其内容的真实性、科学性及严肃性等，使用者使用这些信息时，需要经过进一步核实，如其他媒体、网络或个人从本网站下载使用，须自负版权等法律责任。</div>
-    </div>
-    <!---/main-->
+                </section>
 
+                <!-- 结束 -->
+                <section
+                    class="min-h-screen flex items-center justify-center py-20 px-6 text-center"
+                >
+                    <div>
+                        <h2 class="text-6xl md:text-8xl font-bold text-pink-700 mb-8 breathe-glow">
+                            永远爱你 ❤️
+                        </h2>
+                        <p class="text-3xl text-gray-700 mb-16">
+                            黎翠姣，谢谢你让我成为最幸福的老公
+                        </p>
+                        <p class="text-2xl text-rose-500">2026年农历二月二十四</p>
+                    </div>
+                </section>
+            </section>
+        </main>
 
-    <div id="bottominfo" class="flex-txt-center" style="height: 40px;background-color: #4073a7;color: white;"> 友情链接，<a  href="http://www.dxy.cn">丁香园。</a><a href="www.sdut.edu.cn">山东理工大学</a></div>
+        <script>
+            // 音乐控制（不变）
+            const audio = document.getElementById("bgm");
+            const toggleBtn = document.getElementById("music-toggle");
+            const musicText = document.getElementById("music-text");
+            let isPlaying = false;
 
+            toggleBtn.addEventListener("click", () => {
+                if (isPlaying) {
+                    audio.pause();
+                    musicText.textContent = "播放音乐";
+                } else {
+                    audio.play().catch(() => {});
+                    musicText.textContent = "暂停音乐";
+                }
+                isPlaying = !isPlaying;
+            });
 
-</body>
-<script src="./js/jquery.js"></script>
-<script src="./js/popper.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/video.js"></script>
+            // 进入主页面（不变）
+            document.getElementById("enter-btn").addEventListener("click", () => {
+                document.getElementById("cover").classList.add("hidden");
+                document.getElementById("main").classList.remove("hidden");
+                audio.play().catch(() => {});
+                isPlaying = true;
+                musicText.textContent = "暂停音乐";
+                launchFirework(true);
+                setTimeout(() => launchHeartRain(30), 800);
+            });
 
-<script>
-    $(function() {
-        $('[data-toggle="popover"]').popover();
+            // 淡入观察器（不变）
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) entry.target.classList.add("visible");
+                    });
+                },
+                { threshold: 0.15 },
+            );
+            document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
 
-        var imgsrc = "images/yzm"+(Math.floor(Math.random()*4)+1)+".png";
-        $('#yanzma').attr({src:imgsrc})
-    });
+            // ────────────────────────────────────────────────
+            // 烟花 Canvas ─ 五颜六色 + 心形绽放变体
+            // ────────────────────────────────────────────────
+            const fwCanvas = document.getElementById("fireworks");
+            const ctx = fwCanvas.getContext("2d");
+            fwCanvas.width = window.innerWidth;
+            fwCanvas.height = window.innerHeight;
+            window.addEventListener("resize", () => {
+                fwCanvas.width = window.innerWidth;
+                fwCanvas.height = window.innerHeight;
+            });
 
-    videojs('myvideo', {
-        autoplay: true,
-        controls: true
-    }, function onPlayerReady() {
-        videojs.log('播放器已经准备好了!');
-        this.on('ended', function() {
-            videojs.log('播放结束了!');
-        });
-    });
+            let fireworks = [];
 
-    $("#nav").on("click","a",function(){
-		// 切换li列表样式
-		$(this).addClass("active");
-		$(this).siblings().removeClass("active");
-		// 获取当前点击li 的下标
-		let index = $(this).index() + 1;
-		console.log(index);
-	});
+            const COLOR_POOL = [
+                "#ff6b6b",
+                "#ff8e53",
+                "#ffcc5c",
+                "#a8e063",
+                "#4facfe",
+                "#a166ff",
+                "#ff9a9e",
+                "#fad0c4",
+                "#fec89a",
+                "#d4fc79",
+                "#96e6a1",
+                "#a8edea",
+                "#ffc3a0",
+                "#ffafbd",
+                "#f093fb",
+                "#6dd5ed",
+                "#89fffd",
+            ];
 
-    
-    $("#loginBtn").click(function () {
-        var data = {};
-        var t = $('#myform').serializeArray();
-        $.each(t, function () {
-            data[this.name] = this.value;
-        });
-        switch (data.role) {
-            case '管理员':
-                $(location).attr('href', './administrators.html');
-                break;
-            case '医生':
-                $(location).attr('href', './docotor.html');
-                break;
-            case '患者':
-                $(location).attr('href', './patient.html');
-                break;
-        }
+            class Firework {
+                constructor(x = null, y = null, isHeartBloom = false) {
+                    this.x = x ?? Math.random() * fwCanvas.width;
+                    this.y = y ?? fwCanvas.height + 50;
+                    this.particles = [];
+                    this.exploded = false;
+                    this.color = COLOR_POOL[Math.floor(Math.random() * COLOR_POOL.length)];
+                    this.isHeartBloom = isHeartBloom; // 是否心形绽放模式
+                    this.vy = -Math.random() * 15 - 14;
+                    this.explodeY = Math.random() * (fwCanvas.height * 0.45) + 100;
+                }
 
-    });
-    $("#registerBtn").click(function () {
-        $(location).attr('href', './register.html');
-    });
+                update() {
+                    if (!this.exploded) {
+                        this.y += this.vy;
+                        this.vy += 0.18;
+                        if (this.y <= this.explodeY) this.explode();
+                    } else {
+                        this.particles.forEach((p) => p.update());
+                        this.particles = this.particles.filter((p) => p.alpha > 0);
+                    }
+                }
 
-    $('#zixun').children('*').css({'height':'38px','border-bottom':'1px solid gray','margin-bottom':'5px','padding':'5px'
-    })
-</script>
+                explode() {
+                    this.exploded = true;
+                    const count = this.isHeartBloom ? 120 : 80;
+                    for (let i = 0; i < count; i++) {
+                        let angle;
+                        if (this.isHeartBloom) {
+                            // 心形绽放：角度分布更集中，形成心形轮廓
+                            const t = (i / count) * Math.PI * 2;
+                            angle = t + Math.sin(t * 3) * 0.4; // 心形扰动
+                        } else {
+                            angle = (i / count) * Math.PI * 2 + (Math.random() - 0.5) * 0.3;
+                        }
+                        const speed = Math.random() * 7 + 3.5;
+                        const shape = this.isHeartBloom || Math.random() < 0.5 ? "heart" : "circle";
+                        this.particles.push(
+                            new Particle(this.x, this.y, angle, speed, this.color, shape),
+                        );
+                    }
+                }
 
+                draw() {
+                    if (!this.exploded) {
+                        ctx.fillStyle = "rgba(255,255,255,0.95)";
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, 6, 0, Math.PI * 2);
+                        ctx.fill();
+                    } else {
+                        this.particles.forEach((p) => p.draw());
+                    }
+                }
+            }
+
+            class Particle {
+                constructor(x, y, angle, speed, color, shape) {
+                    this.x = x;
+                    this.y = y;
+                    this.vx = Math.cos(angle) * speed;
+                    this.vy = Math.sin(angle) * speed;
+                    this.color = color;
+                    this.alpha = 1;
+                    this.shape = shape;
+                    this.gravity = 0.11;
+                    this.friction = 0.98;
+                }
+
+                update() {
+                    this.vy += this.gravity;
+                    this.vx *= this.friction;
+                    this.vy *= this.friction;
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.alpha -= 0.009;
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    ctx.fillStyle = this.color;
+                    if (this.shape === "heart") {
+                        const s = 11;
+                        ctx.translate(this.x, this.y);
+                        ctx.scale(0.9 + this.alpha * 0.3, 0.9 + this.alpha * 0.3);
+                        ctx.beginPath();
+                        ctx.moveTo(0, s * 0.25);
+                        ctx.bezierCurveTo(-s * 0.75, -s * 0.65, -s * 1.15, -s * 0.45, -s * 0.95, 0);
+                        ctx.bezierCurveTo(-s * 0.85, s * 0.55, 0, s * 1.15, 0, s * 0.95);
+                        ctx.bezierCurveTo(0, s * 1.15, s * 0.85, s * 0.55, s * 0.95, 0);
+                        ctx.bezierCurveTo(s * 1.15, -s * 0.45, s * 0.75, -s * 0.65, 0, s * 0.25);
+                        ctx.closePath();
+                        ctx.fill();
+                    } else {
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, 5 * this.alpha + 1, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                    ctx.restore();
+                }
+            }
+
+            function animateFireworks() {
+                ctx.fillStyle = "rgba(0,0,0,0.06)";
+                ctx.fillRect(0, 0, fwCanvas.width, fwCanvas.height);
+                fireworks.forEach((fw, i) => {
+                    fw.update();
+                    fw.draw();
+                    if (fw.exploded && fw.particles.length === 0) fireworks.splice(i, 1);
+                });
+                requestAnimationFrame(animateFireworks);
+            }
+            animateFireworks();
+
+            function launchFirework(isHeartBloom = false) {
+                fireworks.push(new Firework(null, null, isHeartBloom));
+            }
+
+            setInterval(() => {
+                launchFirework(Math.random() < 0.5); // 50% 概率心形绽放
+            }, 3500);
+
+            fwCanvas.addEventListener("click", (e) => launchFirework(true));
+
+            // ────────────────────────────────────────────────
+            // 爱心飘落 ─ 粉白色、更圆润、数量减少
+            // ────────────────────────────────────────────────
+            const heartCanvas = document.getElementById("hearts");
+            const hCtx = heartCanvas.getContext("2d");
+            heartCanvas.width = window.innerWidth;
+            heartCanvas.height = window.innerHeight;
+            window.addEventListener("resize", () => {
+                heartCanvas.width = window.innerWidth;
+                heartCanvas.height = window.innerHeight;
+            });
+
+            const hearts = [];
+
+            function createHeart() {
+                return {
+                    x: Math.random() * heartCanvas.width,
+                    y: Math.random() * heartCanvas.height - heartCanvas.height,
+                    size: Math.random() * 18 + 16, // 更大更饱满
+                    speed: Math.random() * 1.2 + 0.6,
+                    sway: Math.random() * 2 + 1,
+                    angle: Math.random() * Math.PI * 2,
+                    rotSpeed: (Math.random() - 0.5) * 0.03,
+                    opacity: Math.random() * 0.4 + 0.5,
+                };
+            }
+
+            for (let i = 0; i < 40; i++) {
+                // 数量减少到40
+                hearts.push(createHeart());
+            }
+
+            function drawHearts() {
+                hCtx.clearRect(0, 0, heartCanvas.width, heartCanvas.height);
+                hearts.forEach((h) => {
+                    h.y += h.speed;
+                    h.x += Math.sin(h.angle) * h.sway;
+                    h.angle += h.rotSpeed;
+
+                    if (h.y > heartCanvas.height + 100) {
+                        Object.assign(h, createHeart());
+                        h.y = -100;
+                    }
+
+                    hCtx.save();
+                    hCtx.globalAlpha = h.opacity;
+                    hCtx.fillStyle = "#fff0f5"; // 粉白色基调
+                    hCtx.strokeStyle = "#ffebee";
+                    hCtx.lineWidth = 1.5;
+                    hCtx.translate(h.x, h.y);
+                    hCtx.rotate(h.angle);
+                    hCtx.scale(h.size / 40, h.size / 40);
+
+                    hCtx.beginPath();
+                    hCtx.moveTo(0, 15);
+                    hCtx.bezierCurveTo(-18, -18, -32, -18, -32, 4);
+                    hCtx.bezierCurveTo(-32, 28, 0, 48, 0, 48);
+                    hCtx.bezierCurveTo(0, 48, 32, 28, 32, 4);
+                    hCtx.bezierCurveTo(32, -18, 18, -18, 0, 15);
+                    hCtx.closePath();
+                    hCtx.fill();
+                    hCtx.stroke(); // 加细边框，更立体圆润
+
+                    hCtx.restore();
+                });
+                requestAnimationFrame(drawHearts);
+            }
+            drawHearts();
+
+            // 信件洒落效果（保持不变）
+            const letterEl = document.getElementById("letter");
+            const fullText = `亲爱的翠姣，
+
+今天是我们结婚三周年的日子，我坐在这里，想对你说很多很多。
+
+你知道吗？三年前的那个周末我们刚确定关系不久，你爸妈还经常吵架，看到你在工位上哭泣的说出身世时，我拥抱着你，那一刻我就已经认定你就是我的人，一生要守护的人。很快，就来到三年前的今天，你穿着婚纱对我微笑，我在你爸妈面前说：这辈子都要好好爱你、护着你。可真正走过来才发现，能被你爱着，是我这辈子最大的幸运。
+
+谢谢你愿意嫁给我，谢谢你给这个家庭带来的每一份付出，谢谢你包容我的不成熟，一次次吵架过后都会笑着说是你给我台阶，谢谢你在每一个深夜陪我聊天，在我疲惫的时候给我一个拥抱。你生哥哥和妹妹的时候，我看着你在产房里那么努力、那么勇敢，想想我眼泪都快流下来了。你说不疼，可我知道你承受了多少。
+
+你从一个爱撒娇、不成熟的小女孩，变成了两个孩子的妈妈，却从来没有抱怨过一句。你包容我的小脾气，理解我的压力，还总是笑着说“我们虽然没有房子，但是我们已经很幸福了”。翠姣，你知道吗？你每一次的笑，每一次的温柔，都在治愈我。
+
+这三年，我们吵过架，也一起哭过，但更多的是牵着手看孩子们一天天长大，看彼此越来越像一家人。我常常想，如果人生可以重来，我还是会毫不犹豫地选择你。
+
+未来的日子还很长，我会继续努力，给你和孩子们更好的生活。我想和你一起，看哥哥妹妹上学、毕业、结婚；想和你一起慢慢变老，手牵手去看夕阳。
+
+黎翠姣，我爱你。
+比三年前更爱，比明天更爱，直到永远。
+
+永远爱你的老公
+2026年农历二月二十四`; //
+
+            const lines = fullText.split("\n").filter((l) => l.trim());
+
+            let lineIndex = 0;
+            let charIndex = 0;
+            let currentLineEl = null;
+
+            function typeNextChar() {
+                if (lineIndex >= lines.length) return;
+
+                if (charIndex === 0) {
+                    currentLineEl = document.createElement("div");
+                    currentLineEl.className = "letter-line";
+                    letterEl.appendChild(currentLineEl);
+                    setTimeout(() => currentLineEl.classList.add("visible"), 120);
+                }
+
+                const line = lines[lineIndex];
+                if (charIndex < line.length) {
+                    const span = document.createElement("span");
+                    span.className = "letter-char";
+                    span.textContent = line[charIndex] === " " ? "\u00A0" : line[charIndex];
+                    currentLineEl.appendChild(span);
+                    setTimeout(() => span.classList.add("visible"), 30);
+                    charIndex++;
+                    setTimeout(typeNextChar, 65 + Math.random() * 45);
+                } else {
+                    charIndex = 0;
+                    lineIndex++;
+                    const pause = line.trim().match(/[。！？]$/) ? 1400 : 900;
+                    setTimeout(typeNextChar, pause);
+                    window.scrollBy({ top: 50, behavior: "smooth" });
+                }
+            }
+
+            const letterObserver = new IntersectionObserver(
+                (entries) => {
+                    if (entries[0].isIntersecting && letterEl.children.length === 0) {
+                        typeNextChar();
+                        letterObserver.disconnect();
+                    }
+                },
+                { threshold: 0.1 },
+            );
+
+            letterObserver.observe(letterEl);
+        </script>
+    </body>
 </html>
